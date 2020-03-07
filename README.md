@@ -10,7 +10,7 @@ To create a network throttler I read this great article here: https://www.crafta
 
 Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)used and integrate.
 
-![](git-trending.gif)
+![](github-pocket-explorer.gif)
 
 ## Features of the app:
 - List Swift Repos
