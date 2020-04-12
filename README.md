@@ -26,9 +26,11 @@ Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)use
 - Display loading
 - Customize navigation bar items
 
+## AppStore URL:
+This app is available for iPhone and iPad OS 13+ and is also published in the official AppStore: https://apps.apple.com/us/app/pocket-explorer/id1505622647
+
 ## Open TODOs:
 - extend unit test suite for the project
-- finish appstore upload
 
 ## License 
 
