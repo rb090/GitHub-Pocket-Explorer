@@ -20,6 +20,17 @@ class NetworkRequestManager: NetworkRequestManagerProtocol {
         session = urlSession
     }
     
+    func t<T: Decodable>(resultObject: T, dataObject: Data) -> T? {
+        do {
+            let decoder = JSONDecoder()
+            let dataFromBackend = try decoder.decode(T.self, from: dataObject)
+            return dataFromBackend
+        } catch {
+            print("sth went wrong when decoding")
+            return nil
+        }
+    }
+    
     func makeNetworkRequest<T: Decodable>(urlRequestObject: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         let task = session.dataTask(with: urlRequestObject, completionHandler: { data, response, error in
             if let errorValue = error {
@@ -29,6 +40,9 @@ class NetworkRequestManager: NetworkRequestManagerProtocol {
             
             let httpStatus = response as? HTTPURLResponse
             
+            // statusCode 200 -> OK, request was successful
+            // statusCode 201 -> Created, request was successful, the requested resource was created by server
+            // statusCode 204 -> No Content, request ws successful, response does not contain data
             guard httpStatus?.statusCode == 200 || httpStatus?.statusCode == 201 || httpStatus?.statusCode == 204 else {
                 let errorString = "unsuccessful request, http code: \(String(describing: httpStatus?.statusCode))"
                 let error = NSError(domain: ErrorDomainDescription.networkResponseDomain.rawValue, code: httpStatus?.statusCode ?? ErrorDomainCode.unexpectedResponseFromAPI.rawValue, userInfo: [NSLocalizedDescriptionKey: errorString])

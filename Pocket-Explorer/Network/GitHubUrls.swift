@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GitHubUrls {
+struct GitHubUrls {
         
     func loadReposUrl(for query: String?, page: Int) -> String? {
         guard let queryString = query else {

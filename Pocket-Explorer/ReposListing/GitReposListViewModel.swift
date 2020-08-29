@@ -14,7 +14,7 @@ class GitReposListViewModel: ObservableObject {
     let getGithubReposService: GetRequestsGit
     let urlService: GitHubUrls
     
-    let throttler = Throttler(minimumDelay: 0.5)
+    var searchDebounce = Debouncer<String>(0.6)
     
     @Published var gitRepos = [GitRepoDTO]()
     @Published var errorWhenLoadingRepos: Error?
@@ -27,6 +27,10 @@ class GitReposListViewModel: ObservableObject {
         getGithubReposService = getReposHelper  
         urlService = urlServiceClass
         self.pagingHelper = pagingHelper
+        
+        searchDebounce.on { [weak self] query in
+            self?.fetchResults(for: query, isSearching: true)
+        }
     }
     
     func fetchRepos(for query: String?, isSearching: Bool) {
@@ -63,10 +67,8 @@ class GitReposListViewModel: ObservableObject {
         }
     }
     
-    func fetchReposThrottelt(for query: String?) {
-        throttler.throttle { [weak self] in
-            self?.fetchRepos(for: query, isSearching: true)
-        }
+    func fetchResults(for query: String?, isSearching: Bool) {
+        query?.isEmpty == true ? fetchRepos(for: nil, isSearching: isSearching) : fetchRepos(for: query, isSearching: isSearching)
     }
     
     func moreItemsToLoad() -> Bool {

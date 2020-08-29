@@ -19,7 +19,6 @@
 		5C42EE8C23E57E700048D53D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42EE8B23E57E700048D53D /* ErrorView.swift */; };
 		5C42EE9723E6EBE10048D53D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42EE9623E6EBE10048D53D /* LoginView.swift */; };
 		5C47BBB7238DB06D00274C10 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47BBB6238DB06D00274C10 /* KeyboardResponder.swift */; };
-		5C47BBBB238DB4E700274C10 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47BBBA238DB4E700274C10 /* Throttler.swift */; };
 		5C50675123F337CA00AD410D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675023F337CA00AD410D /* ProfileView.swift */; };
 		5C50675323F337DE00AD410D /* LoginProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675223F337DE00AD410D /* LoginProfileView.swift */; };
 		5C50675923F33D5400AD410D /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675823F33D5400AD410D /* UserDTO.swift */; };
@@ -42,6 +41,7 @@
 		5C819540240BBFEF00F81A27 /* NetworkRequestUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819524240BBF6800F81A27 /* NetworkRequestUtilsTest.swift */; };
 		5C83687023F74D8D004D95FA /* LoginProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83686F23F74D8D004D95FA /* LoginProfileViewModel.swift */; };
 		5C83687423F7595B004D95FA /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83687323F7595B004D95FA /* Notification+Name.swift */; };
+		5C98E08F24F845660087EE3E /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C98E08E24F845650087EE3E /* Debouncer.swift */; };
 		5C9F7CC9238993EC000A239E /* GitReposRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CC8238993EC000A239E /* GitReposRow.swift */; };
 		5C9F7CCB23899CC2000A239E /* RemoteImageContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CCA23899CC2000A239E /* RemoteImageContainerViewModel.swift */; };
 		5C9F7CCE23899ED9000A239E /* RemoteImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CCD23899ED9000A239E /* RemoteImageContainer.swift */; };
@@ -96,7 +96,6 @@
 		5C42EE8B23E57E700048D53D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5C42EE9623E6EBE10048D53D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5C47BBB6238DB06D00274C10 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
-		5C47BBBA238DB4E700274C10 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		5C50675023F337CA00AD410D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5C50675223F337DE00AD410D /* LoginProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProfileView.swift; sourceTree = "<group>"; };
 		5C50675823F33D5400AD410D /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		5C83686F23F74D8D004D95FA /* LoginProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProfileViewModel.swift; sourceTree = "<group>"; };
 		5C83687323F7595B004D95FA /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		5C91F99323FB1F5800DA5584 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C98E08E24F845650087EE3E /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		5C9F7CC8238993EC000A239E /* GitReposRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitReposRow.swift; sourceTree = "<group>"; };
 		5C9F7CCA23899CC2000A239E /* RemoteImageContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageContainerViewModel.swift; sourceTree = "<group>"; };
 		5C9F7CCD23899ED9000A239E /* RemoteImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageContainer.swift; sourceTree = "<group>"; };
@@ -248,17 +248,9 @@
 		5C47BBB8238DB4D200274C10 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				5C47BBB9238DB4D800274C10 /* NetworkThrottler */,
+				5C98E08E24F845650087EE3E /* Debouncer.swift */,
 			);
 			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		5C47BBB9238DB4D800274C10 /* NetworkThrottler */ = {
-			isa = PBXGroup;
-			children = (
-				5C47BBBA238DB4E700274C10 /* Throttler.swift */,
-			);
-			path = NetworkThrottler;
 			sourceTree = "<group>";
 		};
 		5C50675D23F35E4200AD410D /* CommonViews */ = {
@@ -537,7 +529,6 @@
 				5CA7307C23898AD300EF1911 /* GitRepoDTO.swift in Sources */,
 				5CAE6D4E23F0A2270058E16B /* PostLoginRequestGit.swift in Sources */,
 				5CA73077238984A300EF1911 /* GitHubUrls.swift in Sources */,
-				5C47BBBB238DB4E700274C10 /* Throttler.swift in Sources */,
 				5C2CCDBF23DD01BE00730A4B /* PagingHelper.swift in Sources */,
 				5C83687423F7595B004D95FA /* Notification+Name.swift in Sources */,
 				5CAE6D4323F079330058E16B /* GitHubExplorerAppCreds.swift in Sources */,
@@ -571,6 +562,7 @@
 				5CA730722389848D00EF1911 /* HTTPMethod.swift in Sources */,
 				5CF7AC35238AF9F400402BF6 /* GitRepoForksListViewModel.swift in Sources */,
 				5C546BF223BBE5F2007D22ED /* LicenseDTO.swift in Sources */,
+				5C98E08F24F845660087EE3E /* Debouncer.swift in Sources */,
 				5C1ABC5223D377F6004A0A26 /* LoadingView.swift in Sources */,
 				5CAE6D5023F0A23A0058E16B /* LoginRequestDTO.swift in Sources */,
 				5C5A0B7C239D5DB70065FA04 /* UIApplication+EndEditing.swift in Sources */,
@@ -756,6 +748,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket-Explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = A984J2J64B;
 				ENABLE_PREVIEWS = YES;
@@ -764,6 +757,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rb.Pocket-Explorer";
 				PRODUCT_NAME = "Pocket-Explorer";
 				SWIFT_VERSION = 5.0;
@@ -776,6 +770,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket-Explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = A984J2J64B;
 				ENABLE_PREVIEWS = YES;
@@ -784,6 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rb.Pocket-Explorer";
 				PRODUCT_NAME = "Pocket-Explorer";
 				SWIFT_VERSION = 5.0;

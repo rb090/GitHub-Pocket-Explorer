@@ -14,7 +14,7 @@ struct GitReposList: View {
     
     @ObservedObject var viewModelGitReposList: GitReposListViewModel
     @ObservedObject var keyboardObserver = KeyboardResponder()
-    
+        
     @State private var query = ""
         
     var body: some View {
@@ -30,7 +30,7 @@ struct GitReposList: View {
                 }
                 
                 TextField("search_bar_hint", text: binding) {
-                    self.fetchResults()
+                    self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
                 }
                 
                 if viewModelGitReposList.isLoading && viewModelGitReposList.errorWhenLoadingRepos == nil {
@@ -51,7 +51,7 @@ struct GitReposList: View {
                 
                 if viewModelGitReposList.moreItemsToLoad() && viewModelGitReposList.errorWhenLoadingRepos == nil {
                     LoadingRow(loadingText: String.localizedString(forKey: "txt_fetching_more")).onAppear {
-                        self.fetchResults()
+                        self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
                     }
                 }
             }
@@ -65,16 +65,12 @@ struct GitReposList: View {
                 })
             )
         }.navigationViewStyle(StackNavigationViewStyle()).onAppear {
-            self.fetchResults()
+            self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
         }
     }
     
     private func textFieldChanged(_ text: String) {
-        text.isEmpty ? viewModelGitReposList.fetchReposThrottelt(for: nil) : viewModelGitReposList.fetchReposThrottelt(for: text)
-    }
-    
-    private func fetchResults() {
-        query.isEmpty ? viewModelGitReposList.fetchRepos(for: nil, isSearching: false) : viewModelGitReposList.fetchRepos(for: query, isSearching: false)
+        viewModelGitReposList.searchDebounce.receive(text)
     }
     
     private func navigationBarTitle() -> String {
