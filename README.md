@@ -10,7 +10,7 @@ To create a network throttler I read this great article here: https://www.crafta
 
 Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)used and integrate.
 
-![](git-trending.gif)
+![](github-pocket-explorer.gif)
 
 ## Features of the app:
 - List Swift Repos
@@ -26,9 +26,11 @@ Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)use
 - Display loading
 - Customize navigation bar items
 
+## AppStore
+This app is available for iPhone and iPad OS 13+ and is also published in the official AppStore: https://apps.apple.com/us/app/pocket-explorer/id1505622647
+
 ## Open TODOs:
 - extend unit test suite for the project
-- finish appstore upload
 
 ## License 
 
