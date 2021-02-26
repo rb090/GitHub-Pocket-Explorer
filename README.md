@@ -6,7 +6,7 @@ Paging is also implemented, when scrolling to the bottom, next entries for list 
 
 The goal was to get an idea how SwiftUI can work in a "somehow real world project" in a bigger context and with some kind of "real life questions". My resume is, SwifUI is a new great opportunity to develop apps but it takes some time to learn it and to understand it. One beautiful aspect is, it is simple to make an application looking good on a normal appearence and also when dark appearence is active. And also simple to make it look great on an ipad.
 
-To create a network throttler I read this great article here: https://www.craftappco.com/blog/2018/5/30/simple-throttling-in-swift
+To write an debouncer to throttle requests I read this great article here: https://medium.com/@soxjke/property-wrappers-in-swift-5-1-297ae08fc7a0
 
 Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)used and integrate.
 
