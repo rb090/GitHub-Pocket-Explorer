@@ -13,7 +13,6 @@ struct GitReposList: View {
     @EnvironmentObject var webService: GetRequestsGit
     
     @ObservedObject var viewModelGitReposList: GitReposListViewModel
-    @ObservedObject var keyboardObserver = KeyboardResponder()
         
     @State private var query = ""
         
@@ -29,9 +28,9 @@ struct GitReposList: View {
                     ErrorView(errorText: String.localizedString(forKey: "txt_error_load_repos"))
                 }
                 
-                TextField("search_bar_hint", text: binding) {
+                TextField("search_bar_hint", text: binding, onCommit:  {
                     self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
-                }
+                })
                 
                 if viewModelGitReposList.isLoading && viewModelGitReposList.errorWhenLoadingRepos == nil {
                     LoadingRow(loadingText: String.localizedString(forKey: "txt_loading_repos"))
@@ -55,7 +54,6 @@ struct GitReposList: View {
                     }
                 }
             }
-            .padding(.bottom, keyboardObserver.currentHeight)
             .navigationBarTitle(navigationBarTitle())
             .navigationBarItems(trailing:
                 NavigationLink(destination: LoginProfileView(viewModel: LoginProfileViewModel(getReposHelper: webService)), label: {

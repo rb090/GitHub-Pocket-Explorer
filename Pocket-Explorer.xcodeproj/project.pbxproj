@@ -18,7 +18,6 @@
 		5C3248052413EAF10077F7E4 /* PostLoginRequestGitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3248032413EAC00077F7E4 /* PostLoginRequestGitTest.swift */; };
 		5C42EE8C23E57E700048D53D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42EE8B23E57E700048D53D /* ErrorView.swift */; };
 		5C42EE9723E6EBE10048D53D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42EE9623E6EBE10048D53D /* LoginView.swift */; };
-		5C47BBB7238DB06D00274C10 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C47BBB6238DB06D00274C10 /* KeyboardResponder.swift */; };
 		5C50675123F337CA00AD410D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675023F337CA00AD410D /* ProfileView.swift */; };
 		5C50675323F337DE00AD410D /* LoginProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675223F337DE00AD410D /* LoginProfileView.swift */; };
 		5C50675923F33D5400AD410D /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675823F33D5400AD410D /* UserDTO.swift */; };
@@ -95,7 +94,6 @@
 		5C3248032413EAC00077F7E4 /* PostLoginRequestGitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginRequestGitTest.swift; sourceTree = "<group>"; };
 		5C42EE8B23E57E700048D53D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5C42EE9623E6EBE10048D53D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		5C47BBB6238DB06D00274C10 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		5C50675023F337CA00AD410D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5C50675223F337DE00AD410D /* LoginProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProfileView.swift; sourceTree = "<group>"; };
 		5C50675823F33D5400AD410D /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
@@ -398,7 +396,6 @@
 				5CA7307D23898EE700EF1911 /* GitReposListViewModel.swift */,
 				5C9F7CC8238993EC000A239E /* GitReposRow.swift */,
 				5C9F7CCF2389A5F1000A239E /* GitReposList.swift */,
-				5C47BBB6238DB06D00274C10 /* KeyboardResponder.swift */,
 			);
 			path = ReposListing;
 			sourceTree = "<group>";
@@ -468,7 +465,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = RB;
 				TargetAttributes = {
 					5CA7302C2389845F00EF1911 = {
@@ -569,7 +566,6 @@
 				5C749CD12389EC4800EA585F /* GitForkDisplayRow.swift in Sources */,
 				5C00969823C1349D00305C58 /* RepoWebsite.swift in Sources */,
 				5CDEC80923F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift in Sources */,
-				5C47BBB7238DB06D00274C10 /* KeyboardResponder.swift in Sources */,
 				5CA730752389848D00EF1911 /* GetRequestsGit.swift in Sources */,
 				5C50675123F337CA00AD410D /* ProfileView.swift in Sources */,
 				5C50676023F35E7F00AD410D /* CommonPrimaryButtonStyle.swift in Sources */,
@@ -654,6 +650,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -715,6 +712,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -748,7 +746,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket-Explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = A984J2J64B;
 				ENABLE_PREVIEWS = YES;
@@ -757,7 +755,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rb.Pocket-Explorer";
 				PRODUCT_NAME = "Pocket-Explorer";
 				SWIFT_VERSION = 5.0;
@@ -770,7 +768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Pocket-Explorer/Preview Content\"";
 				DEVELOPMENT_TEAM = A984J2J64B;
 				ENABLE_PREVIEWS = YES;
@@ -779,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rb.Pocket-Explorer";
 				PRODUCT_NAME = "Pocket-Explorer";
 				SWIFT_VERSION = 5.0;
