@@ -35,6 +35,7 @@ struct GitRepoForksList: View {
                     GitForkDisplayRow(repoForkInfo: forkInfo)
                 }
             }
+            .listStyle(PlainListStyle())
         }
         .navigationBarTitle(gitRepoToFetch.repoName).onAppear {
             self.viewModelForksList.fetchRepoForks(for: self.gitRepoToFetch)

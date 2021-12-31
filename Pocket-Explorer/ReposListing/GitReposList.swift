@@ -54,6 +54,7 @@ struct GitReposList: View {
                     }
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationBarTitle(navigationBarTitle())
             .navigationBarItems(trailing:
                 NavigationLink(destination: LoginProfileView(viewModel: LoginProfileViewModel(getReposHelper: webService)), label: {
@@ -62,7 +63,8 @@ struct GitReposList: View {
                     .foregroundColor(Color.purple)
                 })
             )
-        }.navigationViewStyle(StackNavigationViewStyle()).onAppear {
+        }
+        .navigationViewStyle(StackNavigationViewStyle()).onAppear {
             self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
         }
     }
