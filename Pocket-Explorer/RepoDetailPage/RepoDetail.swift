@@ -15,7 +15,7 @@ struct RepoDetail: View {
     
     private let heightButtons: CGFloat = 45
     private let leadingTrailingSpace: CGFloat = 25
-        
+    
     var body: some View {
         VStack {
             RemoteImageContainer(imageUrl: gitRepoForDetailpage.owner?.avatarImageUrl, width: 100, height: 100).padding(.bottom).padding(.top)
@@ -49,14 +49,13 @@ struct RepoDetail: View {
             })
             
             Spacer()
-        }.navigationBarTitle("title_repo_detail", displayMode: .inline).navigationBarItems(trailing:
-            Button(action: {
-                self.share(items: [self.gitRepoForDetailpage.htmlUrl])
-            }) {
-                Image(systemName:"square.and.arrow.up")
-                    .font(Font.title.weight(.regular))
-                    .foregroundColor(Color.purple)
-            }
+        }.navigationBarTitle("title_repo_detail", displayMode: .inline).navigationBarItems(trailing: Button(action: {
+            self.share(items: [self.gitRepoForDetailpage.htmlUrl])
+        }) {
+            Image(systemName:"square.and.arrow.up")
+                .font(Font.title.weight(.regular))
+                .foregroundColor(Color.purple)
+        }
         )
     }
     
@@ -67,7 +66,10 @@ struct RepoDetail: View {
         }
         let vc = UIActivityViewController(activityItems: items, applicationActivities: nil)
         vc.excludedActivityTypes = excludedActivityTypes
+        
         vc.popoverPresentationController?.sourceView = source.view
+        vc.popoverPresentationController?.sourceRect =  CGRect(x: UIScreen.main.bounds.width - 100, y: 70, width: 100, height: 0)
+
         source.present(vc, animated: true)
         return true
     }
