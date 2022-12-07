@@ -20,17 +20,6 @@ class NetworkRequestManager: NetworkRequestManagerProtocol {
         session = urlSession
     }
     
-    func t<T: Decodable>(resultObject: T, dataObject: Data) -> T? {
-        do {
-            let decoder = JSONDecoder()
-            let dataFromBackend = try decoder.decode(T.self, from: dataObject)
-            return dataFromBackend
-        } catch {
-            print("sth went wrong when decoding")
-            return nil
-        }
-    }
-    
     func makeNetworkRequest<T: Decodable>(urlRequestObject: URLRequest) async -> Result<T, Error> {
         do {
             let (data, response) = try await session.data(for: urlRequestObject, delegate: nil)
