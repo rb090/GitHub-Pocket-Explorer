@@ -25,85 +25,65 @@ class GetRequestsTest: XCTestCase {
         getRequest = GetRequestsGit(networkHelper: requestManager, networkRequestUtilsHelper: networkUtilsMock)
     }
     
-    func test_getJsonData_failBecauseNoRequestCreationPossible() {
-        let expectation = self.expectation(description: "failure GET request")
+    func test_getJsonData_failBecauseNoRequestCreationPossible() async {
         let errorExpected = networkUtils.errorCreatingRequestObject() as NSError
         
-        getRequest.getJsonData(url: URL(string: "/test1")!) { (result: Result<MockResultCodable, Error>) in
-            switch result {
-            case .success(let successResult):
-                XCTAssertNil(successResult)
-            case .failure(let errorValue):
-                XCTAssertNotNil(errorValue)
-                XCTAssertEqual((errorValue as NSError), errorExpected)
-            }
-            expectation.fulfill()
-        }
+        let result: Result<MockResultCodable, Error> = await getRequest.getJsonData(url: URL(string: "/test1")!)
         
-        waitForExpectations(timeout: 0.1, handler: nil)
-        XCTAssert(true)
+        switch result {
+        case .success(let successResult):
+            XCTAssertNil(successResult)
+        case .failure(let errorValue):
+            XCTAssertNotNil(errorValue)
+            XCTAssertEqual((errorValue as NSError), errorExpected)
+        }
     }
     
-    func test_getJsonData_success() {
-        let expectation = self.expectation(description: "success GET request")
+    func test_getJsonData_success() async {
         let successResultDto = MockResultCodable(obj1: "Obj1", obj2: "Obj2")
         
-        getRequestMock.getJsonData(url: URL(string: "/test1")!) { (result: Result<MockResultCodable, Error>) in
-            switch result {
-            case .success(let successResult):
-                XCTAssertEqual(successResult, successResultDto)
-            case .failure(let errorValue):
-                XCTAssertNil(errorValue)
-            }
-            expectation.fulfill()
-        }
+        let result: Result<MockResultCodable, Error> = await getRequestMock.getJsonData(url: URL(string: "/test1")!)
         
-        waitForExpectations(timeout: 0.1, handler: nil)
-        XCTAssert(true)
+        switch result {
+        case .success(let successResult):
+            XCTAssertEqual(successResult, successResultDto)
+        case .failure(let errorValue):
+            XCTAssertNil(errorValue)
+        }
     }
     
-    func test_getJsonData_someOtherError() {
-        let expectation = self.expectation(description: "failure GET request")
+    func test_getJsonData_someOtherError() async {
         let errorExpected = NSError(domain: ErrorDomainDescription.networkRequestDomain.rawValue, code: ErrorDomainCode.unexpectedResponseFromAPI.rawValue, userInfo: [NSLocalizedDescriptionKey: "Cannot create request object here"])
         requestManagerMock.isSuccess = false
         requestManagerMock.error = errorExpected
         
-        getRequestMock.getJsonData(url: URL(string: "/test1")!) { (result: Result<MockResultCodable, Error>) in
-            switch result {
-            case .success(let successResult):
-                XCTAssertNil(successResult)
-            case .failure(let errorValue):
-                XCTAssertNotNil(errorValue)
-                XCTAssertEqual((errorValue as NSError), errorExpected)
-            }
-            expectation.fulfill()
-        }
+        let result: Result<MockResultCodable, Error> = await getRequestMock.getJsonData(url: URL(string: "/test1")!)
         
-        waitForExpectations(timeout: 0.1, handler: nil)
-        XCTAssert(true)
+        switch result {
+        case .success(let successResult):
+            XCTAssertNil(successResult)
+        case .failure(let errorValue):
+            XCTAssertNotNil(errorValue)
+            XCTAssertEqual((errorValue as NSError), errorExpected)
+        }
     }
     
-    func test_getJsonData_unauthorziedError() {
-        let expectation = self.expectation(description: "failure GET request")
+    func test_getJsonData_unauthorziedError() async {
         let errorExpected = NSError(domain: ErrorDomainDescription.networkRequestDomain.rawValue, code: 401, userInfo: [NSLocalizedDescriptionKey: "Unauthorized"])
         requestManagerMock.isSuccess = false
         requestManagerMock.error = errorExpected
         
-        getRequestMock.getJsonData(url: URL(string: "/test1")!) { (result: Result<MockResultCodable, Error>) in
-            switch result {
-            case .success(let successResult):
-                XCTAssertNil(successResult)
-            case .failure(let errorValue):
-                // assert that we tried to load 3x
-                XCTAssertEqual(self.getRequestMock.numberRetriesLoadRepos, self.getRequestMock.maxNumberRetriesLoadRepos)
+        let result: Result<MockResultCodable, Error> = await getRequestMock.getJsonData(url: URL(string: "/test1")!)
 
-                XCTAssertNotNil(errorValue)
-                XCTAssertEqual((errorValue as NSError), errorExpected)
-            }
-            expectation.fulfill()
+        switch result {
+        case .success(let successResult):
+            XCTAssertNil(successResult)
+        case .failure(let errorValue):
+            // assert that we tried to load 3x
+            XCTAssertEqual(self.getRequestMock.numberRetriesLoadRepos, self.getRequestMock.maxNumberRetriesLoadRepos)
+
+            XCTAssertNotNil(errorValue)
+            XCTAssertEqual((errorValue as NSError), errorExpected)
         }
-        
-        waitForExpectations(timeout: 1, handler: nil)
-        XCTAssert(true)
     }
 }

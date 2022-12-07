@@ -28,14 +28,16 @@ class GitRepoForksListViewModel: ObservableObject {
     func fetchRepoForks(for repo: GitRepoDTO) {
         guard isLoading == false, pagingHelper.pageToFetch <= pagingHelper.maxPagesToLoad, let forksUrlAppedingPage = repo.forksUrl?.absoluteString.appending("?page=\(pagingHelper.pageToFetch)") else { return }
         
-        getGithubReposService.getJsonData(url: URL(string: forksUrlAppedingPage)) { [weak self] (result: Result<[RepoForksDTO], Error>) in
-            switch result {
+        Task {
+            let reposForksResult: Result<[RepoForksDTO], Error> = await getGithubReposService.getJsonData(url: URL(string: forksUrlAppedingPage))
+            
+            switch reposForksResult {
             case .success(let repoForks):
-                self?.repoForksInfo.append(contentsOf: repoForks)
-                self?.pagingHelper.updatePageToLoad(numberItemsLoaded: repoForks.count)
-                self?.errorWhenLoadingRepoForks = nil
+                repoForksInfo.append(contentsOf: repoForks)
+                pagingHelper.updatePageToLoad(numberItemsLoaded: repoForks.count)
+                errorWhenLoadingRepoForks = nil
             case .failure(let error):
-                self?.errorWhenLoadingRepoForks = error
+                errorWhenLoadingRepoForks = error
                 print("error: \(error)")
             }
         }

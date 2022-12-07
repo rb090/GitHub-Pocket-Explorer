@@ -25,44 +25,25 @@ class PostLoginRequestGitTest: XCTestCase {
         postLoginGit = PostLoginRequestGit(networkHelper: requestManager, networkRequestUtilsHelper: networkUtilsMock)
     }
     
-    func test_postLoginCode_failBecauseNoRequestCreationPossible() {
-        let expectation = self.expectation(description: "failure POST login request")
-        
-        postLoginGit.postLoginCode(authCode: "code", state: "random-state") { loginAccessToken in
-            XCTAssertNil(loginAccessToken)
-            expectation.fulfill()
-        }
-    
-        waitForExpectations(timeout: 1, handler: nil)
-        XCTAssert(true)
+    func test_postLoginCode_failBecauseNoRequestCreationPossible() async {
+        let loginAccessToken = await postLoginGit.postLoginCode(authCode: "code", state: "random-state")
+        XCTAssertNil(loginAccessToken)
     }
     
-    func test_postLoginCode_someErrorHappens() {
-        let expectation = self.expectation(description: "failure POST login request")
+    func test_postLoginCode_someErrorHappens() async {
         let errorExpected = NSError(domain: ErrorDomainDescription.networkRequestDomain.rawValue, code: ErrorDomainCode.unexpectedResponseFromAPI.rawValue, userInfo: [NSLocalizedDescriptionKey: "Cannot create request object here"])
         requestManagerMock.isSuccess = false
         requestManagerMock.error = errorExpected
         
-        postLoginGitMock.postLoginCode(authCode: "auth-code", state: "random-state") { loginAccessTokenResult in
-            XCTAssertNil(loginAccessTokenResult)
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 1, handler: nil)
-        XCTAssert(true)
+        let loginAccessTokenResult = await postLoginGitMock.postLoginCode(authCode: "auth-code", state: "random-state")
+        XCTAssertNil(loginAccessTokenResult)
     }
     
-    func test_postLoginCode_success() {
-        let expectation = self.expectation(description: "success POST request")
+    func test_postLoginCode_success() async {
         let expectedResult = requestManagerMock.accessTokenDto()
         
-        postLoginGitMock.postLoginCode(authCode: "auth-code", state: "random-state-string") { loginAccessTokenResult in
-            XCTAssertNotNil(loginAccessTokenResult)
-            XCTAssertEqual(loginAccessTokenResult?.accessToken, expectedResult.accessToken)
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 1, handler: nil)
-        XCTAssert(true)
+        let loginAccessTokenResult = await postLoginGitMock.postLoginCode(authCode: "auth-code", state: "random-state-string")
+        XCTAssertNotNil(loginAccessTokenResult)
+        XCTAssertEqual(loginAccessTokenResult?.accessToken, expectedResult.accessToken)
     }
 }

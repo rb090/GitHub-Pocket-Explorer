@@ -22,9 +22,9 @@ class GitReposListViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     let pagingHelper: PagingHelper
-         
+    
     init(getReposHelper: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls(), pagingHelper: PagingHelper = PagingHelper()) {
-        getGithubReposService = getReposHelper  
+        getGithubReposService = getReposHelper
         urlService = urlServiceClass
         self.pagingHelper = pagingHelper
         
@@ -35,7 +35,7 @@ class GitReposListViewModel: ObservableObject {
     
     func fetchRepos(for query: String?, isSearching: Bool) {
         guard isLoading == false else { return }
-
+        
         isLoading = true
         
         if isSearching {
@@ -47,21 +47,23 @@ class GitReposListViewModel: ObservableObject {
             return
         }
         
-        getGithubReposService.getJsonData(url: URL(string: urlForRequest)) { [weak self] (result: Result<GitHubRepoListDTO, Error>) in
-            self?.isLoading = false
-            switch result {
+        Task {
+            let githubReposListResult: Result<GitHubRepoListDTO, Error> = await getGithubReposService.getJsonData(url: URL(string: urlForRequest))
+            
+            isLoading = false
+            switch githubReposListResult {
             case .success(let listGithubRepos):
                 let listItems = listGithubRepos.listItems
                 
                 if isSearching {
-                    self?.gitRepos = listItems
+                    gitRepos = listItems
                 } else {
-                    self?.gitRepos.append(contentsOf: listItems)
+                    gitRepos.append(contentsOf: listItems)
                 }
-                self?.errorWhenLoadingRepos = nil
-                self?.pagingHelper.updatePageToLoad(numberItemsLoaded: listItems.count)
+                errorWhenLoadingRepos = nil
+                pagingHelper.updatePageToLoad(numberItemsLoaded: listItems.count)
             case .failure(let error):
-                self?.errorWhenLoadingRepos = error
+                errorWhenLoadingRepos = error
                 print("error: \(error)")
             }
         }

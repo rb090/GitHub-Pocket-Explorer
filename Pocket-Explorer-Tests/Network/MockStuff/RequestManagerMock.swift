@@ -11,15 +11,13 @@ import Foundation
 class RequestManagerMock: NetworkRequestManagerProtocol {
     var isSuccess = true
     var error: NSError?
-
-    func makeNetworkRequest<T>(urlRequestObject: URLRequest, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    
+    func makeNetworkRequest<T>(urlRequestObject: URLRequest) async -> Result<T, Error> where T : Decodable {
         if isSuccess {
             let successResultDto = MockResultCodable(obj1: "Obj1", obj2: "Obj2") as! T
-            completion(.success(successResultDto))
+            return .success(successResultDto)
         } else {
-            if let error = error {
-                completion(.failure(error))
-            }
+            return .failure(error!)
         }
     }
 }
@@ -27,15 +25,13 @@ class RequestManagerMock: NetworkRequestManagerProtocol {
 class RequestManagerMockPostLogin: NetworkRequestManagerProtocol {
     var isSuccess = true
     var error: NSError?
-
-    func makeNetworkRequest<T>(urlRequestObject: URLRequest, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    
+    func makeNetworkRequest<T>(urlRequestObject: URLRequest) async -> Result<T, Error> where T : Decodable {
         if isSuccess {
             let loginAccessToken = self.accessTokenDto() as! T
-            completion(.success(loginAccessToken))
+            return .success(loginAccessToken)
         } else {
-            if let error = error {
-                completion(.failure(error))
-            }
+            return .failure(error!)
         }
     }
     

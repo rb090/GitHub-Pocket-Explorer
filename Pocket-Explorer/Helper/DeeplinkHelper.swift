@@ -28,7 +28,9 @@ class DeeplinkHelper {
         
         print("code from github: \(codeForAuthorization), random state string: \(stateRandomString)")
         
-        postLoginHelper.postLoginCode(authCode: codeForAuthorization, state: stateRandomString) { (authObject) in
+        Task {
+            let authObject = await postLoginHelper.postLoginCode(authCode: codeForAuthorization, state: stateRandomString)
+            
             guard let authObjectValue = authObject else {
                 // maybe handle errors here later if necessary
                 return

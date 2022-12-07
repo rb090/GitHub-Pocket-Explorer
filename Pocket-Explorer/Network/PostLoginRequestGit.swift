@@ -19,28 +19,21 @@ class PostLoginRequestGit {
         urlService = urlServiceClass
     }
     
-    func postLoginCode(authCode: String, state: String, completion: @escaping (LoginAccessTokenDTO?) -> Void) {
+    func postLoginCode(authCode: String, state: String) async -> LoginAccessTokenDTO? {
         let gitLoginUrl = urlService.accessTokenUrl(authCode: authCode, state: state)
         
         guard var requestObject = networkRequestUtils.makeRequestObjectFor(url: gitLoginUrl, httpMethod: .post) else {
-            DispatchQueue.main.async {
-                completion(nil)
-            }
-            return
+            return nil
         }
         
         requestObject.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        networkRequestHelper.makeNetworkRequest(urlRequestObject: requestObject) { (result: Result<LoginAccessTokenDTO, Error>) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let authObject):
-                    completion(authObject)
-                case .failure(let error):
-                    print("error: \(error)")
-                    completion(nil)
-                }
-            }
+        let loginResult: Result<LoginAccessTokenDTO, Error> = await networkRequestHelper.makeNetworkRequest(urlRequestObject: requestObject)
+        
+        if case .success(let authObject) = loginResult {
+            return authObject
+        } else {
+            return nil
         }
     }
 }

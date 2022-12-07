@@ -31,10 +31,7 @@
 		5C819536240BBFE400F81A27 /* GitHubUrlsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819519240BBF6800F81A27 /* GitHubUrlsTest.swift */; };
 		5C819537240BBFE900F81A27 /* MockRequestCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81951D240BBF6800F81A27 /* MockRequestCodable.swift */; };
 		5C819538240BBFE900F81A27 /* NetworkRequestUtilsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81951E240BBF6800F81A27 /* NetworkRequestUtilsMock.swift */; };
-		5C819539240BBFE900F81A27 /* HTTPURLResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81951F240BBF6800F81A27 /* HTTPURLResponseMock.swift */; };
-		5C81953A240BBFE900F81A27 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819520240BBF6800F81A27 /* URLSessionMock.swift */; };
 		5C81953B240BBFE900F81A27 /* MockResultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819521240BBF6800F81A27 /* MockResultCodable.swift */; };
-		5C81953C240BBFE900F81A27 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819522240BBF6800F81A27 /* URLSessionDataTaskMock.swift */; };
 		5C81953D240BBFE900F81A27 /* RequestManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819523240BBF6800F81A27 /* RequestManagerMock.swift */; };
 		5C81953F240BBFEF00F81A27 /* NetworkRequestManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81951B240BBF6800F81A27 /* NetworkRequestManagerTest.swift */; };
 		5C819540240BBFEF00F81A27 /* NetworkRequestUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819524240BBF6800F81A27 /* NetworkRequestUtilsTest.swift */; };
@@ -62,6 +59,7 @@
 		5CAE6D4E23F0A2270058E16B /* PostLoginRequestGit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE6D4D23F0A2270058E16B /* PostLoginRequestGit.swift */; };
 		5CAE6D5023F0A23A0058E16B /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE6D4F23F0A23A0058E16B /* LoginRequestDTO.swift */; };
 		5CAE6D5223F0A25A0058E16B /* LoginAccessTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE6D5123F0A25A0058E16B /* LoginAccessTokenDTO.swift */; };
+		5CB025F4294143F500CE0114 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB025F3294143F500CE0114 /* MockURLProtocol.swift */; };
 		5CCEA5A42389BEB500FA4014 /* GitHubRepoListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCEA5A32389BEB500FA4014 /* GitHubRepoListDTO.swift */; };
 		5CD8942223F9B87500F7210C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8942123F9B87500F7210C /* BackButton.swift */; };
 		5CDEC80723F210B1009F41D9 /* DeeplinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEC80623F210B1009F41D9 /* DeeplinkHelper.swift */; };
@@ -107,10 +105,7 @@
 		5C81951B240BBF6800F81A27 /* NetworkRequestManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestManagerTest.swift; sourceTree = "<group>"; };
 		5C81951D240BBF6800F81A27 /* MockRequestCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequestCodable.swift; sourceTree = "<group>"; };
 		5C81951E240BBF6800F81A27 /* NetworkRequestUtilsMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestUtilsMock.swift; sourceTree = "<group>"; };
-		5C81951F240BBF6800F81A27 /* HTTPURLResponseMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseMock.swift; sourceTree = "<group>"; };
-		5C819520240BBF6800F81A27 /* URLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		5C819521240BBF6800F81A27 /* MockResultCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockResultCodable.swift; sourceTree = "<group>"; };
-		5C819522240BBF6800F81A27 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		5C819523240BBF6800F81A27 /* RequestManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManagerMock.swift; sourceTree = "<group>"; };
 		5C819524240BBF6800F81A27 /* NetworkRequestUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestUtilsTest.swift; sourceTree = "<group>"; };
 		5C819525240BBF6800F81A27 /* GetRequestsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetRequestsTest.swift; sourceTree = "<group>"; };
@@ -143,6 +138,7 @@
 		5CAE6D4D23F0A2270058E16B /* PostLoginRequestGit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostLoginRequestGit.swift; sourceTree = "<group>"; };
 		5CAE6D4F23F0A23A0058E16B /* LoginRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
 		5CAE6D5123F0A25A0058E16B /* LoginAccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccessTokenDTO.swift; sourceTree = "<group>"; };
+		5CB025F3294143F500CE0114 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		5CCEA5A32389BEB500FA4014 /* GitHubRepoListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoListDTO.swift; sourceTree = "<group>"; };
 		5CD8942123F9B87500F7210C /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5CDEC80623F210B1009F41D9 /* DeeplinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkHelper.swift; sourceTree = "<group>"; };
@@ -280,11 +276,9 @@
 			children = (
 				5C81951D240BBF6800F81A27 /* MockRequestCodable.swift */,
 				5C81951E240BBF6800F81A27 /* NetworkRequestUtilsMock.swift */,
-				5C81951F240BBF6800F81A27 /* HTTPURLResponseMock.swift */,
-				5C819520240BBF6800F81A27 /* URLSessionMock.swift */,
 				5C819521240BBF6800F81A27 /* MockResultCodable.swift */,
-				5C819522240BBF6800F81A27 /* URLSessionDataTaskMock.swift */,
 				5C819523240BBF6800F81A27 /* RequestManagerMock.swift */,
+				5CB025F3294143F500CE0114 /* MockURLProtocol.swift */,
 			);
 			path = MockStuff;
 			sourceTree = "<group>";
@@ -577,18 +571,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C81953A240BBFE900F81A27 /* URLSessionMock.swift in Sources */,
 				5C819536240BBFE400F81A27 /* GitHubUrlsTest.swift in Sources */,
 				5C81953B240BBFE900F81A27 /* MockResultCodable.swift in Sources */,
 				5C81953D240BBFE900F81A27 /* RequestManagerMock.swift in Sources */,
-				5C819539240BBFE900F81A27 /* HTTPURLResponseMock.swift in Sources */,
 				5C819537240BBFE900F81A27 /* MockRequestCodable.swift in Sources */,
 				5C81953F240BBFEF00F81A27 /* NetworkRequestManagerTest.swift in Sources */,
+				5CB025F4294143F500CE0114 /* MockURLProtocol.swift in Sources */,
 				5C819540240BBFEF00F81A27 /* NetworkRequestUtilsTest.swift in Sources */,
 				5C3248052413EAF10077F7E4 /* PostLoginRequestGitTest.swift in Sources */,
 				5C819538240BBFE900F81A27 /* NetworkRequestUtilsMock.swift in Sources */,
 				5C819535240BBFE400F81A27 /* GetRequestsTest.swift in Sources */,
-				5C81953C240BBFE900F81A27 /* URLSessionDataTaskMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +667,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -731,7 +723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -793,7 +785,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A984J2J64B;
 				INFOPLIST_FILE = "Pocket-Explorer-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -815,7 +807,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A984J2J64B;
 				INFOPLIST_FILE = "Pocket-Explorer-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
