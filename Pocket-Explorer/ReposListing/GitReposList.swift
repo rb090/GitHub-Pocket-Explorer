@@ -10,80 +10,104 @@ import Foundation
 import SwiftUI
 
 struct GitReposList: View {
+        
     @EnvironmentObject var webService: GetRequestsGit
     
     @ObservedObject var viewModelGitReposList: GitReposListViewModel
-        
-    @State private var query = ""
-        
+    
     var body: some View {
-        let binding = Binding<String>(
-            get: { self.query },
-            set: { self.query = $0; self.textFieldChanged($0) }
-        )
-        
-        return NavigationView {
+        NavigationStack {
             List {
+                // Show error in case loading repos request failed
                 if viewModelGitReposList.errorWhenLoadingRepos != nil {
-                    ErrorView(errorText: String.localizedString(forKey: "txt_error_load_repos"))
+                    ErrorView(errorText: String(localized: "txt_error_load_repos"))
+                        .fullWidthSeparators()
                 }
                 
-                TextField("search_bar_hint", text: binding, onCommit:  {
-                    self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
-                })
-                
-                if viewModelGitReposList.isLoading && viewModelGitReposList.errorWhenLoadingRepos == nil {
+                // Loading state
+                if viewModelGitReposList.errorWhenLoadingRepos == nil, viewModelGitReposList.isLoading {
                     LoadingRow(loadingText: String.localizedString(forKey: "txt_loading_repos"))
+                        .id(UUID())
+                        .fullWidthSeparators()
                 }
                 
-                if viewModelGitReposList.gitRepos.count == 0 && viewModelGitReposList.errorWhenLoadingRepos == nil && !viewModelGitReposList.isLoading {
+                // Empty state, shown when no results
+                if viewModelGitReposList.gitRepos.isEmpty, viewModelGitReposList.errorWhenLoadingRepos == nil, !viewModelGitReposList.isLoading {
                     Text("txt_no_results_for_search")
                         .font(.headline)
-                        .foregroundColor(Color.red)
+                        .foregroundStyle(.secondary)
+                        .fullWidthSeparators()
                 }
                 
+                // Repo rows displayed from the loaded repos
                 ForEach(viewModelGitReposList.gitRepos, id: \.id) { repo in
-                    NavigationLink(destination: RepoDetail(gitRepoForDetailpage: repo)) {
+                    NavigationLink {
+                        RepoDetail(gitRepoForDetailpage: repo)
+                    } label: {
                         GitReposRow(gitRepo: repo)
                     }
+                    .fullWidthSeparators()
                 }
                 
-                if viewModelGitReposList.moreItemsToLoad() && viewModelGitReposList.errorWhenLoadingRepos == nil {
-                    LoadingRow(loadingText: String.localizedString(forKey: "txt_fetching_more")).onAppear {
-                        self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
+                // Infinite scroll: load more when the loading row comes into view until a page max is reached!
+                if viewModelGitReposList.moreItemsToLoad(), viewModelGitReposList.errorWhenLoadingRepos == nil {
+                    LoadingRow(loadingText: String(localized: "txt_fetching_more"))
+                        .id(UUID())
+                        .fullWidthSeparators()
+                        .task {
+                            viewModelGitReposList.fetchRepos( for: viewModelGitReposList.query, isSearching: false)
+                        }
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle(viewModelGitReposList.navigationBarTitle())
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        LoginProfileView(viewModel: LoginProfileViewModel(getReposHelper: webService))
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title.weight(.regular))
+                            .foregroundStyle(.purple)
                     }
                 }
             }
-            .listStyle(PlainListStyle())
-            .navigationBarTitle(navigationBarTitle())
-            .navigationBarItems(trailing:
-                NavigationLink(destination: LoginProfileView(viewModel: LoginProfileViewModel(getReposHelper: webService)), label: {
-                    Image(systemName:"person.crop.circle")
-                    .font(Font.title.weight(.regular))
-                    .foregroundColor(Color.purple)
-                })
-            )
         }
-        .navigationViewStyle(StackNavigationViewStyle()).onAppear {
-            self.viewModelGitReposList.fetchResults(for: self.query, isSearching: false)
+        // System search field (iOS 15+), bound to your debounced query
+        .searchable(text: $viewModelGitReposList.query, prompt: Text("search_bar_hint"))
+        // Initial load when the view appears (non-blocking)
+        .task {
+            viewModelGitReposList.fetchRepos(for: viewModelGitReposList.query,  isSearching: false)
         }
-    }
-    
-    private func textFieldChanged(_ text: String) {
-        viewModelGitReposList.searchDebounce.receive(text)
-    }
-    
-    private func navigationBarTitle() -> String {
-        return query.isEmpty ? String.localizedString(forKey: "title_git_repos") : query
     }
 }
 
-#if DEBUG
-struct GitReposList_Previews : PreviewProvider {
+/// Preview for `GitReposList` View.
+///
+/// The view needs:
+///  - a `GitReposListViewModel` (which depends on `GetRequestsGit`)
+///  - a `GetRequestsGit` is injected as `@EnvironmentObject`
+///
+/// `PreviewWrapper` sets both up using `@StateObject`, so they behave like real app dependencies.
+/// `webService`got injected  into the  environment for the preview!
+struct GitReposList_Previews: PreviewProvider {
+    struct PreviewWrapper: View {
+        @StateObject private var webService: GetRequestsGit
+        @StateObject private var viewModel: GitReposListViewModel
+        
+        init() {
+            let ws = GetRequestsGit()
+            _webService = StateObject(wrappedValue: ws)
+            _viewModel = StateObject(wrappedValue: GitReposListViewModel(getReposHelper: ws))
+        }
+        
+        var body: some View {
+            GitReposList(viewModelGitReposList: viewModel)
+                .environmentObject(webService)
+        }
+    }
+    
     static var previews: some View {
-        let webService = GetRequestsGit()
-        let gitRepostViewModel = GitReposListViewModel(getReposHelper: webService)
-        return GitReposList(viewModelGitReposList: gitRepostViewModel)
+        PreviewWrapper()
     }
 }
-#endif

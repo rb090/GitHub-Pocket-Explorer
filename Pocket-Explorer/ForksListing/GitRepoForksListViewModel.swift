@@ -16,7 +16,7 @@ class GitRepoForksListViewModel: ObservableObject {
     @Published var repoForksInfo = [RepoForksDTO]()
     @Published var errorWhenLoadingRepoForks: Error?
     
-    private var isLoading: Bool = false
+    @Published var isLoading: Bool = false
     
     let pagingHelper: PagingHelper
     
@@ -25,8 +25,14 @@ class GitRepoForksListViewModel: ObservableObject {
         self.pagingHelper = pagingHelper
     }
     
+    @MainActor
     func fetchRepoForks(for repo: GitRepoDTO) {
-        guard isLoading == false, pagingHelper.pageToFetch <= pagingHelper.maxPagesToLoad, let forksUrlAppedingPage = repo.forksUrl?.absoluteString.appending("?page=\(pagingHelper.pageToFetch)") else { return }
+        guard isLoading == false,
+              pagingHelper.pageToFetch <= pagingHelper.maxPagesToLoad,
+              let forksUrlAppedingPage = repo.forksUrl?.absoluteString.appending("?page=\(pagingHelper.pageToFetch)")
+        else {
+            return
+        }
         
         Task {
             let reposForksResult: Result<[RepoForksDTO], Error> = await getGithubReposService.getJsonData(url: URL(string: forksUrlAppedingPage))

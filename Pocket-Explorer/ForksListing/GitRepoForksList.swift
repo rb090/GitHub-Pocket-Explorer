@@ -15,30 +15,39 @@ struct GitRepoForksList: View {
     var gitRepoToFetch: GitRepoDTO
     
     var body: some View {
-        
-        VStack(alignment: .leading) {
-            if self.viewModelForksList.repoForksInfo.count == 0 && self.viewModelForksList.errorWhenLoadingRepoForks == nil {
+        List {
+            // Initial loading state when there is no data or error.
+            if viewModelForksList.repoForksInfo.isEmpty, viewModelForksList.errorWhenLoadingRepoForks == nil {
                 LoadingRow(loadingText: String.localizedString(forKey: "txt_loading_forks"))
-                    .padding(.init(top: 20, leading: 0, bottom: 0, trailing: 20))
+                    .id(UUID())
+                    .fullWidthSeparators()
             }
             
-            if self.viewModelForksList.errorWhenLoadingRepoForks != nil {
+            // We got an error, we show an error hint!
+            if viewModelForksList.errorWhenLoadingRepoForks != nil {
                 ErrorView(errorText: String.localizedString(forKey: "txt_error_load_forks"))
+                    .fullWidthSeparators()
             }
             
-            List(viewModelForksList.repoForksInfo) { forkInfo in
-                if self.viewModelForksList.moreItemsToLoad(item: forkInfo) {
-                    LoadingRow(loadingText: String.localizedString(forKey: "txt_fetching_more")).onAppear {
-                        self.viewModelForksList.fetchRepoForks(for: self.gitRepoToFetch)
-                    }
+            // Display the list and handle infinite loading
+            ForEach(viewModelForksList.repoForksInfo) { forkInfo in
+                if viewModelForksList.moreItemsToLoad(item: forkInfo) {
+                    LoadingRow(loadingText: String.localizedString(forKey: "txt_fetching_more"))
+                        .id(UUID())
+                        .fullWidthSeparators()
+                        .task {
+                            viewModelForksList.fetchRepoForks(for: gitRepoToFetch)
+                        }
                 } else {
                     GitForkDisplayRow(repoForkInfo: forkInfo)
+                        .fullWidthSeparators()
                 }
             }
-            .listStyle(PlainListStyle())
         }
-        .navigationBarTitle(gitRepoToFetch.repoName).onAppear {
-            self.viewModelForksList.fetchRepoForks(for: self.gitRepoToFetch)
+        .listStyle(.plain)
+        .navigationTitle(gitRepoToFetch.repoName)
+        .task {
+            viewModelForksList.fetchRepoForks(for: gitRepoToFetch)
         }
     }
 }

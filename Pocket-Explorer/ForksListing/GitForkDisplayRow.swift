@@ -16,9 +16,10 @@ struct GitForkDisplayRow: View {
         HStack {
             RemoteImageContainer(imageUrl: repoForkInfo.userWhoForks.avatarImageUrl)
             
-            VStack(alignment: .leading, spacing: 5) {
-                Text(repoForkInfo.userWhoForks.loginName).font(.headline)
-            }
+            Text(repoForkInfo.userWhoForks.loginName).font(.headline)
+                .padding(8)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .edgesIgnoringSafeArea(.all)
     }
 }

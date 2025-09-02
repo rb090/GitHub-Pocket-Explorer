@@ -32,7 +32,6 @@ struct GitReposRow: View {
     }
 }
 
-#if DEBUG
 struct GitRepoCell_Previews : PreviewProvider {
     static var previews: some View {
         let repoOwner = OwnerDTO(avatarImageUrl: URL(string: "https://the.url"), loginName: "login name")
@@ -41,4 +40,3 @@ struct GitRepoCell_Previews : PreviewProvider {
         return GitReposRow(gitRepo: gitRepo).previewLayout(.sizeThatFits)
     }
 }
-#endif

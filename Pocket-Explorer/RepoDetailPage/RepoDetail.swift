@@ -75,7 +75,6 @@ struct RepoDetail: View {
     }
 }
 
-#if DEBUG
 struct RepoDetail_Previews : PreviewProvider {
     static var previews: some View {
         let repoOwner = OwnerDTO(avatarImageUrl: URL(string: "https://the.url"), loginName: "login name")
@@ -84,5 +83,4 @@ struct RepoDetail_Previews : PreviewProvider {
         return RepoDetail(gitRepoForDetailpage: gitRepo).environmentObject(GetRequestsGit())
     }
 }
-#endif
 

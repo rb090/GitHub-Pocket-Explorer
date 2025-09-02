@@ -26,6 +26,18 @@ struct SimpleHStackForText: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.init(top: 0, leading: 0, bottom: 0, trailing: leadingTrailingSpace))
-        }.frame(minWidth: 0, idealWidth: .infinity, maxWidth: .infinity, alignment: .leading)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+struct SimpleHStackForText_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            SimpleHStackForText(title: "Forks", description: "120", leadingTrailingSpace: 16)
+            SimpleHStackForText(title: "Watchers", description: "89", leadingTrailingSpace: 16)
+            SimpleHStackForText(title: "Stars", description: "240", leadingTrailingSpace: 16)
+        }
+        .padding()
     }
 }

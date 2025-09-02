@@ -11,7 +11,7 @@ import Foundation
 struct GitHubUrls {
         
     func loadReposUrl(for query: String?, page: Int) -> String? {
-        guard let queryString = query else {
+        guard let queryString = query, !queryString.isEmpty else {
             return "https://api.github.com/search/repositories?q=language:swift+sort:stars&page=\(page)"
         }
         

@@ -14,7 +14,7 @@ class GitReposListViewModel: ObservableObject {
     let getGithubReposService: GetRequestsGit
     let urlService: GitHubUrls
     
-    var searchDebounce = Debouncer<String>(0.6)
+    @Published var query = ""
     
     @Published var gitRepos = [GitRepoDTO]()
     @Published var errorWhenLoadingRepos: Error?
@@ -23,16 +23,30 @@ class GitReposListViewModel: ObservableObject {
     
     let pagingHelper: PagingHelper
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(getReposHelper: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls(), pagingHelper: PagingHelper = PagingHelper()) {
         getGithubReposService = getReposHelper
         urlService = urlServiceClass
         self.pagingHelper = pagingHelper
-        
-        searchDebounce.on { [weak self] query in
-            self?.fetchResults(for: query, isSearching: true)
-        }
+
+        // Listen to changes in the `query` property.
+        // - `.removeDuplicates()` ensures the pipeline only reacts when the value actually changes. Avoids unnecessary API calls when the user ends up typing the same thing again.
+        // - `.debounce(...)` waits 500ms after the last keystroke before emitting, to avoid firing on every character typed.
+        // - `.sink { ... }` calls `fetchRepos` with the latest debounced query.
+        // - The subscription is stored in `cancellables` to keep it alive for the lifetime of the object.
+        $query
+            .removeDuplicates()
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .sink { [weak self] q in
+                Task { @MainActor in
+                    self?.fetchRepos(for: self?.query, isSearching: true)
+                }
+            }
+            .store(in: &cancellables)
     }
     
+    @MainActor
     func fetchRepos(for query: String?, isSearching: Bool) {
         guard isLoading == false else { return }
         
@@ -44,6 +58,7 @@ class GitReposListViewModel: ObservableObject {
         
         guard let urlForRequest = urlService.loadReposUrl(for: query, page: pagingHelper.pageToFetch) else {
             // TODO create error object and show up info
+            isLoading = false
             return
         }
         
@@ -69,11 +84,11 @@ class GitReposListViewModel: ObservableObject {
         }
     }
     
-    func fetchResults(for query: String?, isSearching: Bool) {
-        query?.isEmpty == true ? fetchRepos(for: nil, isSearching: isSearching) : fetchRepos(for: query, isSearching: isSearching)
+    func moreItemsToLoad() -> Bool {
+        pagingHelper.moreItemsToLoad(numberItemsLoaded: gitRepos.count)
     }
     
-    func moreItemsToLoad() -> Bool {
-        return pagingHelper.moreItemsToLoad(numberItemsLoaded: gitRepos.count)
+    func navigationBarTitle() -> String {
+        query.isEmpty ? String.localizedString(forKey: "title_git_repos") : query
     }
 }
