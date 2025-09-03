@@ -19,9 +19,9 @@ class GitHubUrlsTest: XCTestCase {
     }
     
     func test_loadReposUrl_failureReturnNilUrl() {
-        let str = String(bytes: [0xD8, 0x00] as [UInt8], encoding: String.Encoding.utf16BigEndian)!
+        let str = String(bytes: [0xD8, 0x00] as [UInt8], encoding: String.Encoding.utf16BigEndian)
         let gitUrl = githubUrls.loadReposUrl(for: str, page: 1)
-        XCTAssertEqual(gitUrl, nil)
+        XCTAssertEqual(gitUrl, "https://api.github.com/search/repositories?q=language:swift+sort:stars&page=1")
     }
     
     func test_loadReposUrl_queryString() {

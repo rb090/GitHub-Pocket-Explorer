@@ -11,7 +11,13 @@ import SwiftUI
 import Combine
 
 struct LoginProfileView: View {
-    @ObservedObject var viewModel: LoginProfileViewModel
+    private let webService: GetRequestsGit
+    @StateObject var viewModel: LoginProfileViewModel
+    
+    init(webService: GetRequestsGit) {
+        self.webService = webService
+        _viewModel = StateObject(wrappedValue: LoginProfileViewModel(webService: webService))
+    }
     
     var body: some View {
         VStack {
@@ -20,7 +26,13 @@ struct LoginProfileView: View {
             } else {
                 ProfileView(userObject: viewModel.userObject!)
             }            
-        }.navigationBarTitle("title_github_access", displayMode: .inline).onAppear {
+        }
+        .navigationBarTitle("title_github_access", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) { NavigationBarBackButton() }
+        }
+        .task {
             self.viewModel.loadUserFromGitHub()
         }
     }

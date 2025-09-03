@@ -29,14 +29,13 @@ struct GitReposRow: View {
                     .foregroundColor(Color.gray)
             }
         }
+        .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
     }
 }
 
-struct GitRepoCell_Previews : PreviewProvider {
-    static var previews: some View {
-        let repoOwner = OwnerDTO(avatarImageUrl: URL(string: "https://the.url"), loginName: "login name")
-        let license = LicenseDTO(name: "License name", licenseUrl: URL(string: "/license"))
-        let gitRepo = GitRepoDTO(id: 1, repoName: "Preview Repo", owner: repoOwner, numberOfForks: 3, numberOfWatchers: 40, repoDescription: "Preview Repo desc", forksUrl: URL(string: "https://the.forks.url"), htmlUrl: URL(string: "https://foo.bar")!, license: license)
-        return GitReposRow(gitRepo: gitRepo).previewLayout(.sizeThatFits)
-    }
+#Preview("GitReposRow", traits: .sizeThatFitsLayout) {
+    let repoOwner = OwnerDTO(avatarImageUrl: URL(string: "https://the.url"), loginName: "login name")
+    let license = LicenseDTO(name: "License name", licenseUrl: URL(string: "/license"))
+    let gitRepo = GitRepoDTO(id: 1, repoName: "Preview Repo", owner: repoOwner, numberOfForks: 3, numberOfWatchers: 40, repoDescription: "Preview Repo desc", forksUrl: URL(string: "https://the.forks.url"), htmlUrl: URL(string: "https://foo.bar")!, license: license)
+    return GitReposRow(gitRepo: gitRepo)
 }

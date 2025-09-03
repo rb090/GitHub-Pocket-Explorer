@@ -24,6 +24,7 @@
 "txt_no_results_for_search" = "No results for your current search";
 "title_github_login" = "GitHub Login";
 "btn_txt_review_app_access" = "Review app access";
+"btn_txt_open_github" = "Open app on GH";
 "title_github_access" = "GitHub Connection";
 "title_repo_detail" = "GitHub Repo Detail";
 "txt_location" = "Location";

@@ -9,10 +9,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    private let leadingTrailingSpace: CGFloat = 20
     private let gitHubUrls = GitHubUrls()
     var userObject: UserDTO
-    private let heightButtons: CGFloat = 40
     
     var body: some View {
         VStack {
@@ -20,21 +18,21 @@ struct ProfileView: View {
             
             Text(userObject.name)
                 .font(.title)
-                .padding(.init(top: 10, leading: leadingTrailingSpace, bottom: 0, trailing: leadingTrailingSpace))
+                .padding(.init(top: 10, leading: DesignSystem.Spacing.l, bottom: 0, trailing: DesignSystem.Spacing.l))
             
             VStack {
                 if userObject.location != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_location"), description: userObject.location!, leadingTrailingSpace: leadingTrailingSpace).padding(.top)
+                    SimpleHStackForText(title: String.localizedString(forKey: "txt_location"), description: userObject.location!).padding(.top)
                 }
                 
                 if userObject.company != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_company"), description: userObject.company!, leadingTrailingSpace: leadingTrailingSpace).padding(.top)
+                    SimpleHStackForText(title: String.localizedString(forKey: "txt_company"), description: userObject.company!).padding(.top)
                 }
                 
                 Button(action: {
                     UIApplication.shared.open(self.gitHubUrls.reviewAccessUrl())
                 }){
-                    CommonPrimaryButtonStyle(imageName: "person.crop.circle", buttonText: Text("btn_txt_review_app_access"), leadingTrailingSpace: leadingTrailingSpace, height: 45).padding(.top)
+                    CommonPrimaryButtonStyle(imageName: "person.crop.circle", buttonText: Text("btn_txt_review_app_access")).padding(.top)
                 }
             }
             

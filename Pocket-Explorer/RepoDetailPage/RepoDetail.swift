@@ -9,12 +9,9 @@
 import SwiftUI
 
 struct RepoDetail: View {
-    @EnvironmentObject var webService: GetRequestsGit
-    
+    let webService: GetRequestsGit
+        
     var gitRepoForDetailpage: GitRepoDTO
-    
-    private let heightButtons: CGFloat = 45
-    private let leadingTrailingSpace: CGFloat = 25
     
     var body: some View {
         VStack {
@@ -23,64 +20,57 @@ struct RepoDetail: View {
             Text(gitRepoForDetailpage.repoName)
                 .bold()
                 .font(.title)
-                .padding(.init(top: 0, leading: leadingTrailingSpace, bottom: 0, trailing: leadingTrailingSpace))
+                .padding(.horizontal, DesignSystem.Spacing.xl)
             
             VStack(alignment: .leading) {
                 if gitRepoForDetailpage.repoDescription != nil {
                     Text(gitRepoForDetailpage.repoDescription!)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                        .padding(.init(top: 20, leading: leadingTrailingSpace, bottom: 0, trailing: leadingTrailingSpace))
+                        .padding(.top, DesignSystem.Spacing.xxl)
+                        .padding(.horizontal, DesignSystem.Spacing.xl)
                 }
                 
                 if gitRepoForDetailpage.license?.name != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_license"), description: gitRepoForDetailpage.license!.name, leadingTrailingSpace: leadingTrailingSpace).padding(.top)
+                    SimpleHStackForText(title: String.localizedString(forKey: "txt_license"), description: gitRepoForDetailpage.license!.name)
+                        .padding(.top, DesignSystem.Spacing.xs)
                 }
             }
             
             if gitRepoForDetailpage.numberOfForks ?? 0 > 0 {
-                NavigationLink(destination: GitRepoForksList(viewModelForksList: GitRepoForksListViewModel(getReposHelper: self.webService), gitRepoToFetch: self.gitRepoForDetailpage), label: {
-                    CommonPrimaryButtonStyle(imageName: nil, buttonText: Text("btn_txt_forks"), leadingTrailingSpace: leadingTrailingSpace, height: 45).padding(.top)
+                NavigationLink(destination: GitRepoForksList(webService: webService, gitRepo: gitRepoForDetailpage), label: {
+                    CommonPrimaryButtonStyle(imageName: nil, buttonText: Text("btn_txt_forks")).padding(.top, DesignSystem.Spacing.l)
                 })
             }
             
             NavigationLink(destination: RepoWebsite(gitRepoWebiste: self.gitRepoForDetailpage.htmlUrl, repoName: self.gitRepoForDetailpage.repoName), label: {
-                CommonPrimaryButtonStyle(imageName: nil, buttonText: Text("btn_txt_open_github"), leadingTrailingSpace: leadingTrailingSpace, height: 45).padding(.top)
+                CommonPrimaryButtonStyle(imageName: nil, buttonText: Text("btn_txt_open_github")).padding(.top, DesignSystem.Spacing.l)
             })
             
             Spacer()
-        }.navigationBarTitle("title_repo_detail", displayMode: .inline).navigationBarItems(trailing: Button(action: {
-            self.share(items: [self.gitRepoForDetailpage.htmlUrl])
-        }) {
-            Image(systemName:"square.and.arrow.up")
-                .font(Font.title.weight(.regular))
-                .foregroundColor(Color.purple)
         }
-        )
-    }
-    
-    @discardableResult
-    func share(items: [Any], excludedActivityTypes: [UIActivity.ActivityType]? = nil) -> Bool {
-        guard let source = UIApplication.shared.windows.last?.rootViewController else {
-            return false
+        .navigationBarTitle("title_repo_detail", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) { NavigationBarBackButton() }
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(
+                    item: gitRepoForDetailpage.htmlUrl,
+                    preview: SharePreview(gitRepoForDetailpage.repoName, icon: Image(systemName: "link"))
+                ) {
+                    Image(systemName: "square.and.arrow.up").foregroundColor(DesignSystem.AppColors.primary)
+                }
+            }
         }
-        let vc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        vc.excludedActivityTypes = excludedActivityTypes
-        
-        vc.popoverPresentationController?.sourceView = source.view
-        vc.popoverPresentationController?.sourceRect =  CGRect(x: UIScreen.main.bounds.width - 100, y: 70, width: 100, height: 0)
-
-        source.present(vc, animated: true)
-        return true
     }
 }
 
-struct RepoDetail_Previews : PreviewProvider {
-    static var previews: some View {
+#Preview("RepoDetail") {
+    NavigationStack {
         let repoOwner = OwnerDTO(avatarImageUrl: URL(string: "https://the.url"), loginName: "login name")
         let license = LicenseDTO(name: "License name", licenseUrl: URL(string: "/license"))
         let gitRepo = GitRepoDTO(id: 1, repoName: "Preview Repo", owner: repoOwner, numberOfForks: 3, numberOfWatchers: 40, repoDescription: "Preview Repo desc", forksUrl: URL(string: "https://the.forks.url"), htmlUrl: URL(string: "https://foo.bar")!, license: license)
-        return RepoDetail(gitRepoForDetailpage: gitRepo).environmentObject(GetRequestsGit())
+        RepoDetail(webService: GetRequestsGit(), gitRepoForDetailpage: gitRepo)
     }
 }
 

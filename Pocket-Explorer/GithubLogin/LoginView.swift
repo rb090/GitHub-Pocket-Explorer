@@ -25,7 +25,7 @@ struct LoginView: View {
             Button(action: {
                 UIApplication.shared.open(self.gitHubUrls.loginUrl())
             }){
-                CommonPrimaryButtonStyle(imageName: "person.crop.circle.badge.exclam", buttonText: Text("btn_txt_open_github"), leadingTrailingSpace: leadingTrailingSpace, height: 45).padding(.top)
+                CommonPrimaryButtonStyle(imageName: "person.crop.circle.badge.exclam", buttonText: Text("btn_txt_open_github")).padding(.top)
             }
             
             Spacer()

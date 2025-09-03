@@ -27,18 +27,6 @@ class NetworkRequestUtilsTest: XCTestCase {
         XCTAssertEqual(error.code, ErrorDomainCode.errorWhenCreateRequestObject.rawValue)
     }
     
-    func test_makeRequestObjectWithRequestBodyFor_success() {
-        let theUrl = URL(string: "blablablub")
-        let requestCodables = MockResultCodable(obj1: "test", obj2: "blub")
-        let encodedData = try? JSONEncoder().encode(requestCodables)
-        
-        let requestObject = networkRequestUtils.makeRequestObjectWithRequestBodyFor(url: theUrl!, httpMethod: .post, requestObject: requestCodables)
-        XCTAssertNotNil(requestObject)
-        XCTAssertEqual(requestObject?.url, theUrl)
-        XCTAssertEqual(requestObject?.httpMethod, "POST")
-        XCTAssertEqual(requestObject?.httpBody, encodedData)
-    }
-    
     func test_errorCodeFromError() {
         let error = NSError(domain: "a domain", code: 400, userInfo: nil)
         let errorCode = networkRequestUtils.errorCodeFrom(error: error)

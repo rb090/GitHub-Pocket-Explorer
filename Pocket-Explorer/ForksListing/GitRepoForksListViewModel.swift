@@ -18,10 +18,10 @@ class GitRepoForksListViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
     
-    let pagingHelper: PagingHelper
+    let pagingHelper: Paginator
     
-    init(getReposHelper: GetRequestsGit, pagingHelper: PagingHelper = PagingHelper()) {
-        getGithubReposService = getReposHelper
+    init(webService: GetRequestsGit, pagingHelper: Paginator = Paginator()) {
+        getGithubReposService = webService
         self.pagingHelper = pagingHelper
     }
     

@@ -10,9 +10,17 @@ import Foundation
 import SwiftUI
 
 struct GitRepoForksList: View {
-    @ObservedObject var viewModelForksList: GitRepoForksListViewModel
+    
+    private let webService: GetRequestsGit
+    @StateObject var viewModelForksList: GitRepoForksListViewModel
     
     var gitRepoToFetch: GitRepoDTO
+    
+    init(webService: GetRequestsGit, gitRepo: GitRepoDTO) {
+        self.webService = webService
+        _viewModelForksList = StateObject(wrappedValue: GitRepoForksListViewModel(webService: webService))
+        gitRepoToFetch = gitRepo
+    }
     
     var body: some View {
         List {
@@ -46,6 +54,10 @@ struct GitRepoForksList: View {
         }
         .listStyle(.plain)
         .navigationTitle(gitRepoToFetch.repoName)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) { NavigationBarBackButton() }
+        }
         .task {
             viewModelForksList.fetchRepoForks(for: gitRepoToFetch)
         }

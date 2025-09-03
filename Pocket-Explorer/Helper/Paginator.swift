@@ -1,5 +1,5 @@
 //
-//  PagingHelper.swift
+//  Paginator.swift
 //  Pocket-Explorer
 //
 //  Created by Roxana Bucura on 26.01.20.
@@ -9,7 +9,7 @@
 import Foundation
 
 // TODO write tests
-class PagingHelper {
+class Paginator {
     var pageToFetch: Int = 1
     
     let maxPagesToLoad = 5

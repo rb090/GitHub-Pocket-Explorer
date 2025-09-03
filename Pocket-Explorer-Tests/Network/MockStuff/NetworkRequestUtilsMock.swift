@@ -13,8 +13,4 @@ class NetworkRequestUtilsMock: NetworkRequestUtils {
     override func makeRequestObjectFor(url: URL, httpMethod: HTTPMethod) -> URLRequest? {
         return nil
     }
-    
-    override func makeRequestObjectWithRequestBodyFor<T>(url: URL, httpMethod: HTTPMethod, requestObject: T) -> URLRequest? where T : Encodable {
-        return nil
-    }
 }

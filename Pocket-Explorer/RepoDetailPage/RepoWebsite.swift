@@ -7,14 +7,25 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct RepoWebsite: View {
     var gitRepoWebiste: URL
     var repoName: String
-    
+        
     var body: some View {
-        VStack {
-            WebView(urlForWebview: self.gitRepoWebiste, webviewNavigationDelegate: nil)
-        }.navigationBarTitle(Text(repoName), displayMode: .inline)
+        WebView(urlForWebview: self.gitRepoWebiste, webviewNavigationDelegate: nil)
+            .navigationTitle(repoName)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) { NavigationBarBackButton() }
+            }
+    }
+}
+
+#Preview("RepoWebsite") {
+    NavigationStack {
+        RepoWebsite(gitRepoWebiste: URL(string: "https://github.com/apple/swift-algorithms")!, repoName: "swift-algorithms")
     }
 }

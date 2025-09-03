@@ -21,19 +21,19 @@ class GitReposListViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
     
-    let pagingHelper: PagingHelper
+    let pagingHelper: Paginator
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(getReposHelper: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls(), pagingHelper: PagingHelper = PagingHelper()) {
-        getGithubReposService = getReposHelper
+    init(webService: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls(), pagingHelper: Paginator = Paginator()) {
+        getGithubReposService = webService
         urlService = urlServiceClass
         self.pagingHelper = pagingHelper
 
         // Listen to changes in the `query` property.
         // - `.removeDuplicates()` ensures the pipeline only reacts when the value actually changes. Avoids unnecessary API calls when the user ends up typing the same thing again.
         // - `.debounce(...)` waits 500ms after the last keystroke before emitting, to avoid firing on every character typed.
-        // - `.sink { ... }` calls `fetchRepos` with the latest debounced query.
+        // - `.sink { ... }` subscriber, calls `fetchRepos` with the latest debounced query.
         // - The subscription is stored in `cancellables` to keep it alive for the lifetime of the object.
         $query
             .removeDuplicates()
@@ -75,6 +75,7 @@ class GitReposListViewModel: ObservableObject {
                 } else {
                     gitRepos.append(contentsOf: listItems)
                 }
+                
                 errorWhenLoadingRepos = nil
                 pagingHelper.updatePageToLoad(numberItemsLoaded: listItems.count)
             case .failure(let error):
@@ -86,9 +87,5 @@ class GitReposListViewModel: ObservableObject {
     
     func moreItemsToLoad() -> Bool {
         pagingHelper.moreItemsToLoad(numberItemsLoaded: gitRepos.count)
-    }
-    
-    func navigationBarTitle() -> String {
-        query.isEmpty ? String.localizedString(forKey: "title_git_repos") : query
     }
 }

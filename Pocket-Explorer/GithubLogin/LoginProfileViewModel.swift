@@ -17,14 +17,16 @@ class LoginProfileViewModel: ObservableObject {
     
     @Published var userObject: UserDTO?
     
-    init(getReposHelper: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls()) {
-        getGithubReposService = getReposHelper
+    init(webService: GetRequestsGit, urlServiceClass: GitHubUrls = GitHubUrls()) {
+        getGithubReposService = webService
         urlService = urlServiceClass
         
         cancellable = NotificationCenter.Publisher(center: .default, name: .reloadProfile, object: nil)
             .sink { [weak self] notification in
                 print("user logged in, reload this view")
-                self?.loadUserFromGitHub()
+                Task { @MainActor in
+                    self?.loadUserFromGitHub()
+                }
         }
     }
     
@@ -32,6 +34,7 @@ class LoginProfileViewModel: ObservableObject {
         self.cancellable?.cancel()
     }
     
+    @MainActor
     func loadUserFromGitHub() {
         // if no auth objects persisted, do not try to load profile from github
         guard let _ : LoginAccessTokenDTO = UserDefaults.standard.getObject(forKey: GitHubExplorerAppCreds.persistedLoginObject) else {

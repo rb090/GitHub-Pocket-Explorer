@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GetRequestsGit: ObservableObject {
+class GetRequestsGit {
     
     private var networkRequestHelper: NetworkRequestManagerProtocol
     private var networkRequestUtils: NetworkRequestUtils

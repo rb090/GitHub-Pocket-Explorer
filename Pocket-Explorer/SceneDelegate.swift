@@ -6,7 +6,7 @@
 //  Copyright © 2019 RB. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -66,5 +66,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         DeeplinkHelper().handleGithub(appRedirectUrl: url)
     }
-}
+}*/
 

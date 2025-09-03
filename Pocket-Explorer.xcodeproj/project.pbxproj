@@ -12,7 +12,7 @@
 		5C10369E238DD98500E0E294 /* NetworkRequestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10369D238DD98500E0E294 /* NetworkRequestUtils.swift */; };
 		5C28EE7323AF8EED00030950 /* RepoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C28EE7223AF8EED00030950 /* RepoDetail.swift */; };
 		5C2B222F2389D34D00053865 /* RepoForksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B222E2389D34D00053865 /* RepoForksDTO.swift */; };
-		5C2CCDBF23DD01BE00730A4B /* PagingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CCDBE23DD01BE00730A4B /* PagingHelper.swift */; };
+		5C2CCDBF23DD01BE00730A4B /* Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CCDBE23DD01BE00730A4B /* Paginator.swift */; };
 		5C2CCDC123DDD69F00730A4B /* LoadingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CCDC023DDD69F00730A4B /* LoadingRow.swift */; };
 		5C3248052413EAF10077F7E4 /* PostLoginRequestGitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3248032413EAC00077F7E4 /* PostLoginRequestGitTest.swift */; };
 		5C42EE8C23E57E700048D53D /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42EE8B23E57E700048D53D /* ErrorView.swift */; };
@@ -39,8 +39,6 @@
 		5C9F7CCB23899CC2000A239E /* RemoteImageContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CCA23899CC2000A239E /* RemoteImageContainerViewModel.swift */; };
 		5C9F7CCE23899ED9000A239E /* RemoteImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CCD23899ED9000A239E /* RemoteImageContainer.swift */; };
 		5C9F7CD02389A5F1000A239E /* GitReposList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F7CCF2389A5F1000A239E /* GitReposList.swift */; };
-		5CA730312389845F00EF1911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA730302389845F00EF1911 /* AppDelegate.swift */; };
-		5CA730332389845F00EF1911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA730322389845F00EF1911 /* SceneDelegate.swift */; };
 		5CA730372389846000EF1911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA730362389846000EF1911 /* Assets.xcassets */; };
 		5CA7303A2389846000EF1911 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CA730392389846000EF1911 /* Preview Assets.xcassets */; };
 		5CA7303D2389846000EF1911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CA7303B2389846000EF1911 /* LaunchScreen.storyboard */; };
@@ -58,13 +56,15 @@
 		5CAE6D5223F0A25A0058E16B /* LoginAccessTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE6D5123F0A25A0058E16B /* LoginAccessTokenDTO.swift */; };
 		5CB025F4294143F500CE0114 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB025F3294143F500CE0114 /* MockURLProtocol.swift */; };
 		5CCEA5A42389BEB500FA4014 /* GitHubRepoListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCEA5A32389BEB500FA4014 /* GitHubRepoListDTO.swift */; };
-		5CD8942223F9B87500F7210C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD8942123F9B87500F7210C /* BackButton.swift */; };
 		5CDEC80723F210B1009F41D9 /* DeeplinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEC80623F210B1009F41D9 /* DeeplinkHelper.swift */; };
 		5CDEC80923F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEC80823F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift */; };
 		5CF7AC33238AF9BE00402BF6 /* GitRepoForksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC32238AF9BE00402BF6 /* GitRepoForksList.swift */; };
 		5CF7AC35238AF9F400402BF6 /* GitRepoForksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC34238AF9F400402BF6 /* GitRepoForksListViewModel.swift */; };
 		5CF7AC3E238B258700402BF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF7AC40238B258700402BF6 /* Localizable.strings */; };
 		5CF7AC43238B26B800402BF6 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC42238B26B800402BF6 /* String+Localizable.swift */; };
+		78477C532E68148700BC2583 /* NavigationBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78477C522E68147F00BC2583 /* NavigationBarBackButton.swift */; };
+		78477C552E6827B700BC2583 /* PocketExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78477C542E6827AB00BC2583 /* PocketExplorerApp.swift */; };
+		786AD5C82E68500E001757D1 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786AD5C72E68500A001757D1 /* DesignSystem.swift */; };
 		78C0E6FD2E6785E700EDD63D /* View+ListRowSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C0E6FC2E6785E500EDD63D /* View+ListRowSeparator.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +84,7 @@
 		5C10369D238DD98500E0E294 /* NetworkRequestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestUtils.swift; sourceTree = "<group>"; };
 		5C28EE7223AF8EED00030950 /* RepoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetail.swift; sourceTree = "<group>"; };
 		5C2B222E2389D34D00053865 /* RepoForksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoForksDTO.swift; sourceTree = "<group>"; };
-		5C2CCDBE23DD01BE00730A4B /* PagingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHelper.swift; sourceTree = "<group>"; };
+		5C2CCDBE23DD01BE00730A4B /* Paginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginator.swift; sourceTree = "<group>"; };
 		5C2CCDC023DDD69F00730A4B /* LoadingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRow.swift; sourceTree = "<group>"; };
 		5C3248032413EAC00077F7E4 /* PostLoginRequestGitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoginRequestGitTest.swift; sourceTree = "<group>"; };
 		5C42EE8B23E57E700048D53D /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -113,8 +113,6 @@
 		5C9F7CCD23899ED9000A239E /* RemoteImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageContainer.swift; sourceTree = "<group>"; };
 		5C9F7CCF2389A5F1000A239E /* GitReposList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitReposList.swift; sourceTree = "<group>"; };
 		5CA7302D2389845F00EF1911 /* Pocket-Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pocket-Explorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CA730302389845F00EF1911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CA730322389845F00EF1911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CA730362389846000EF1911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CA730392389846000EF1911 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5CA7303C2389846000EF1911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -135,13 +133,15 @@
 		5CAE6D5123F0A25A0058E16B /* LoginAccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccessTokenDTO.swift; sourceTree = "<group>"; };
 		5CB025F3294143F500CE0114 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		5CCEA5A32389BEB500FA4014 /* GitHubRepoListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoListDTO.swift; sourceTree = "<group>"; };
-		5CD8942123F9B87500F7210C /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5CDEC80623F210B1009F41D9 /* DeeplinkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkHelper.swift; sourceTree = "<group>"; };
 		5CDEC80823F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SaveOnDisk.swift"; sourceTree = "<group>"; };
 		5CF7AC32238AF9BE00402BF6 /* GitRepoForksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRepoForksList.swift; sourceTree = "<group>"; };
 		5CF7AC34238AF9F400402BF6 /* GitRepoForksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRepoForksListViewModel.swift; sourceTree = "<group>"; };
 		5CF7AC3F238B258700402BF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CF7AC42238B26B800402BF6 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		78477C522E68147F00BC2583 /* NavigationBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackButton.swift; sourceTree = "<group>"; };
+		78477C542E6827AB00BC2583 /* PocketExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketExplorerApp.swift; sourceTree = "<group>"; };
+		786AD5C72E68500A001757D1 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		78C0E6FC2E6785E500EDD63D /* View+ListRowSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ListRowSeparator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,7 +183,7 @@
 		5C2CCDBD23DD01AE00730A4B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5C2CCDBE23DD01BE00730A4B /* PagingHelper.swift */,
+				5C2CCDBE23DD01BE00730A4B /* Paginator.swift */,
 				5CDEC80623F210B1009F41D9 /* DeeplinkHelper.swift */,
 			);
 			path = Helper;
@@ -224,13 +224,13 @@
 		5C50675D23F35E4200AD410D /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				786AD5C62E684A66001757D1 /* Buttons */,
+				78477C512E68146400BC2583 /* NavigationBarButtons */,
 				5C00969923C1393B00305C58 /* SwiftUiWebview */,
 				5CD6543323D37422004CF664 /* LoadingView */,
 				5C42EE8A23E57E600048D53D /* ErrorView */,
 				5C9F7CCC23899EB9000A239E /* RemoteImageLoading */,
 				5C50675B23F355AB00AD410D /* SimpleHStackForText.swift */,
-				5C50675F23F35E7F00AD410D /* CommonPrimaryButtonStyle.swift */,
-				5CD8942123F9B87500F7210C /* BackButton.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -287,6 +287,7 @@
 		5CA7302F2389845F00EF1911 /* Pocket-Explorer */ = {
 			isa = PBXGroup;
 			children = (
+				786AD5C72E68500A001757D1 /* DesignSystem.swift */,
 				5C50675D23F35E4200AD410D /* CommonViews */,
 				5C42EE9523E6EBC60048D53D /* GithubLogin */,
 				5CF7AC41238B269800402BF6 /* Extensions */,
@@ -296,8 +297,7 @@
 				5CA7307823898A1C00EF1911 /* Models */,
 				5CA7306B2389848D00EF1911 /* Network */,
 				5C2CCDBD23DD01AE00730A4B /* Helper */,
-				5CA730322389845F00EF1911 /* SceneDelegate.swift */,
-				5CA730302389845F00EF1911 /* AppDelegate.swift */,
+				78477C542E6827AB00BC2583 /* PocketExplorerApp.swift */,
 				5CA730362389846000EF1911 /* Assets.xcassets */,
 				5CA7303B2389846000EF1911 /* LaunchScreen.storyboard */,
 				5CA7303E2389846000EF1911 /* Info.plist */,
@@ -382,6 +382,22 @@
 				5C83687323F7595B004D95FA /* Notification+Name.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		78477C512E68146400BC2583 /* NavigationBarButtons */ = {
+			isa = PBXGroup;
+			children = (
+				78477C522E68147F00BC2583 /* NavigationBarBackButton.swift */,
+			);
+			path = NavigationBarButtons;
+			sourceTree = "<group>";
+		};
+		786AD5C62E684A66001757D1 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5C50675F23F35E7F00AD410D /* CommonPrimaryButtonStyle.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,11 +506,11 @@
 				5CA7307C23898AD300EF1911 /* GitRepoDTO.swift in Sources */,
 				5CAE6D4E23F0A2270058E16B /* PostLoginRequestGit.swift in Sources */,
 				5CA73077238984A300EF1911 /* GitHubUrls.swift in Sources */,
-				5C2CCDBF23DD01BE00730A4B /* PagingHelper.swift in Sources */,
+				5C2CCDBF23DD01BE00730A4B /* Paginator.swift in Sources */,
 				5C83687423F7595B004D95FA /* Notification+Name.swift in Sources */,
 				5CAE6D4323F079330058E16B /* GitHubExplorerAppCreds.swift in Sources */,
+				78477C552E6827B700BC2583 /* PocketExplorerApp.swift in Sources */,
 				5C50675C23F355AB00AD410D /* SimpleHStackForText.swift in Sources */,
-				5CD8942223F9B87500F7210C /* BackButton.swift in Sources */,
 				5C00969B23C1395800305C58 /* WebView.swift in Sources */,
 				5C2CCDC123DDD69F00730A4B /* LoadingRow.swift in Sources */,
 				5C9F7CC9238993EC000A239E /* GitReposRow.swift in Sources */,
@@ -502,13 +518,13 @@
 				5CA730742389848D00EF1911 /* NetworkRequestManager.swift in Sources */,
 				5C9F7CCB23899CC2000A239E /* RemoteImageContainerViewModel.swift in Sources */,
 				5C10369E238DD98500E0E294 /* NetworkRequestUtils.swift in Sources */,
-				5CA730312389845F00EF1911 /* AppDelegate.swift in Sources */,
 				5C83687023F74D8D004D95FA /* LoginProfileViewModel.swift in Sources */,
 				78C0E6FD2E6785E700EDD63D /* View+ListRowSeparator.swift in Sources */,
+				78477C532E68148700BC2583 /* NavigationBarBackButton.swift in Sources */,
 				5C50675323F337DE00AD410D /* LoginProfileView.swift in Sources */,
-				5CA730332389845F00EF1911 /* SceneDelegate.swift in Sources */,
 				5CA7307A23898A5300EF1911 /* OwnerDTO.swift in Sources */,
 				5C50675923F33D5400AD410D /* UserDTO.swift in Sources */,
+				786AD5C82E68500E001757D1 /* DesignSystem.swift in Sources */,
 				5CAE6D5223F0A25A0058E16B /* LoginAccessTokenDTO.swift in Sources */,
 				5C9F7CD02389A5F1000A239E /* GitReposList.swift in Sources */,
 				5CDEC80723F210B1009F41D9 /* DeeplinkHelper.swift in Sources */,
@@ -755,7 +771,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A984J2J64B;
 				INFOPLIST_FILE = "Pocket-Explorer-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -777,7 +793,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A984J2J64B;
 				INFOPLIST_FILE = "Pocket-Explorer-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

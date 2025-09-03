@@ -10,10 +10,14 @@ import Foundation
 import SwiftUI
 
 struct GitReposList: View {
-        
-    @EnvironmentObject var webService: GetRequestsGit
     
-    @ObservedObject var viewModelGitReposList: GitReposListViewModel
+    private let webService: GetRequestsGit
+    @StateObject var viewModelGitReposList: GitReposListViewModel
+    
+    init(webService: GetRequestsGit) {
+        self.webService = webService
+        _viewModelGitReposList = StateObject(wrappedValue: GitReposListViewModel(webService: webService))
+    }
     
     var body: some View {
         NavigationStack {
@@ -35,14 +39,15 @@ struct GitReposList: View {
                 if viewModelGitReposList.gitRepos.isEmpty, viewModelGitReposList.errorWhenLoadingRepos == nil, !viewModelGitReposList.isLoading {
                     Text("txt_no_results_for_search")
                         .font(.headline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(DesignSystem.AppColors.primary)
+                        .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
                         .fullWidthSeparators()
                 }
                 
                 // Repo rows displayed from the loaded repos
                 ForEach(viewModelGitReposList.gitRepos, id: \.id) { repo in
                     NavigationLink {
-                        RepoDetail(gitRepoForDetailpage: repo)
+                        RepoDetail(webService: webService, gitRepoForDetailpage: repo)
                     } label: {
                         GitReposRow(gitRepo: repo)
                     }
@@ -60,21 +65,20 @@ struct GitReposList: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle(viewModelGitReposList.navigationBarTitle())
+            .navigationTitle(String.localizedString(forKey: "title_git_repos"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
-                        LoginProfileView(viewModel: LoginProfileViewModel(getReposHelper: webService))
+                        LoginProfileView(webService: webService)
                     } label: {
-                        Image(systemName: "person.crop.circle")
-                            .font(.title.weight(.regular))
-                            .foregroundStyle(.purple)
+                        Image(systemName: "person.crop.circle").foregroundStyle(DesignSystem.AppColors.primary)
                     }
                 }
             }
         }
         // System search field (iOS 15+), bound to your debounced query
         .searchable(text: $viewModelGitReposList.query, prompt: Text("search_bar_hint"))
+        .tint(DesignSystem.AppColors.primary)
         // Initial load when the view appears (non-blocking)
         .task {
             viewModelGitReposList.fetchRepos(for: viewModelGitReposList.query,  isSearching: false)
@@ -82,32 +86,7 @@ struct GitReposList: View {
     }
 }
 
-/// Preview for `GitReposList` View.
-///
-/// The view needs:
-///  - a `GitReposListViewModel` (which depends on `GetRequestsGit`)
-///  - a `GetRequestsGit` is injected as `@EnvironmentObject`
-///
-/// `PreviewWrapper` sets both up using `@StateObject`, so they behave like real app dependencies.
-/// `webService`got injected  into the  environment for the preview!
-struct GitReposList_Previews: PreviewProvider {
-    struct PreviewWrapper: View {
-        @StateObject private var webService: GetRequestsGit
-        @StateObject private var viewModel: GitReposListViewModel
-        
-        init() {
-            let ws = GetRequestsGit()
-            _webService = StateObject(wrappedValue: ws)
-            _viewModel = StateObject(wrappedValue: GitReposListViewModel(getReposHelper: ws))
-        }
-        
-        var body: some View {
-            GitReposList(viewModelGitReposList: viewModel)
-                .environmentObject(webService)
-        }
-    }
-    
-    static var previews: some View {
-        PreviewWrapper()
-    }
+
+#Preview("GitReposList") {
+    GitReposList(webService: GetRequestsGit())
 }

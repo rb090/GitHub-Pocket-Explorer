@@ -18,17 +18,6 @@ class NetworkRequestUtils {
         print("url: \(backendRequest.url?.absoluteString ?? "missing backendRequest.url")")
         return backendRequest
     }
-
-    // make request object with body data (example post/put)
-    func makeRequestObjectWithRequestBodyFor<T: Encodable>(url: URL, httpMethod: HTTPMethod, requestObject: T) -> URLRequest? {
-        var backendRequest = makeRequestObjectFor(url: url, httpMethod: httpMethod)
-
-        let encoder = JSONEncoder()
-        guard let httpBody = try? encoder.encode(requestObject) else { return nil }
-        backendRequest?.httpBody = httpBody
-        
-        return backendRequest
-    }
     
     func errorCreatingRequestObject() -> Error {
         let errorString = "Cannot create request object here"

@@ -57,11 +57,11 @@ class NetworkRequestManager: NetworkRequestManagerProtocol {
             print("Invalid response here: \(String(describing: response))")
             return
         }
-        
+                
         let missingHeader = "Missing header"
-        let rateLimit = httpResponse.allHeaderFields["X-RateLimit-Limit"] as? String ?? missingHeader
-        let rateLimitRemaining = httpResponse.allHeaderFields["X-RateLimit-Remaining"] as? String ?? missingHeader
-        let rateLimitReset = httpResponse.allHeaderFields["X-RateLimit-Reset"] as? String ?? missingHeader
+        let rateLimit = httpResponse.allHeaderFields["x-ratelimit-limit"] as? String ?? missingHeader
+        let rateLimitRemaining = httpResponse.allHeaderFields["x-ratelimit-remaining"] as? String ?? missingHeader
+        let rateLimitReset = httpResponse.allHeaderFields["x-ratelimit-reset"] as? String ?? missingHeader
         
         print("X-RateLimit-Limit: \(rateLimit)")
         print("X-RateLimit-Remaining: \(rateLimitRemaining)")

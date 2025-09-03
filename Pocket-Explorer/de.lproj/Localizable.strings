@@ -23,7 +23,8 @@
 "txt_error_load_forks" = "Error beim Laden der forks für diese Repo";
 "txt_no_results_for_search" = "Keine Ergebnisse für die Suche";
 "title_github_login" = "GitHub Login";
-"btn_txt_review_app_access" = "Auf GitHub ansehen";
+"btn_txt_review_app_access" = "Zugriff in GH verwalten";
+"btn_txt_open_github" = "App auf GH öffnen";
 "title_github_access" = "GitHub Verbindung";
 "title_repo_detail" = "GitHub Repo Detail";
 "txt_location" = "Location";
