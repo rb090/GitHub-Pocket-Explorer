@@ -734,6 +734,7 @@
 				DEVELOPMENT_TEAM = 36S9FRJL3B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Pocket-Explorer/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -758,6 +759,7 @@
 				DEVELOPMENT_TEAM = 36S9FRJL3B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Pocket-Explorer/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
