@@ -14,6 +14,8 @@ struct LoginProfileView: View {
     private let webService: GetRequestsGit
     @StateObject var viewModel: LoginProfileViewModel
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     init(webService: GetRequestsGit) {
         self.webService = webService
         _viewModel = StateObject(wrappedValue: LoginProfileViewModel(webService: webService))
@@ -25,7 +27,7 @@ struct LoginProfileView: View {
                 LoginView()
             } else {
                 ProfileView(userObject: viewModel.userObject!)
-            }            
+            }
         }
         .navigationBarTitle("title_github_access", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
@@ -34,6 +36,13 @@ struct LoginProfileView: View {
         }
         .task {
             self.viewModel.loadUserFromGitHub()
+        }
+        // Check for the GitHub user also when app became active from background
+        // 🚧 GitHub accessToken not invalidated immediately after logout on the profile, takes ca. 1-2 minutes!
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                viewModel.loadUserFromGitHub()
+            }
         }
     }
 }

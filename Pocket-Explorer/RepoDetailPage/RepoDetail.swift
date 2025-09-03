@@ -32,7 +32,7 @@ struct RepoDetail: View {
                 }
                 
                 if gitRepoForDetailpage.license?.name != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_license"), description: gitRepoForDetailpage.license!.name)
+                    SimpleHStackForText(title: String(localized: "txt_license"), description: gitRepoForDetailpage.license!.name)
                         .padding(.top, DesignSystem.Spacing.xs)
                 }
             }

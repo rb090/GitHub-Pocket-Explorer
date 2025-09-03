@@ -38,4 +38,5 @@ playground.xcworkspace
 # file with git api key
 **/ApiKeysConstants.swift
 
-*Secrets.*
+# Ignore any Secrets.xcconfig file
+**/Secrets.xcconfig

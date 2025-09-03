@@ -56,6 +56,6 @@ class GitRepoForksListViewModel: ObservableObject {
     }
     
     func moreItemsToLoad(item: RepoForksDTO) -> Bool {
-        return isLastArrayItem(item: item) && pagingHelper.moreItemsToLoad(numberItemsLoaded: repoForksInfo.count)
+        return isLastArrayItem(item: item) && pagingHelper.shouldLoadMoreItems(numberItemsLoaded: repoForksInfo.count)
     }
 }

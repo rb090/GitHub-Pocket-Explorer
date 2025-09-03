@@ -9,10 +9,17 @@
 import Foundation
 
 struct GitHubExplorerAppCreds {
-    static let clientIdGitExplorerApp = "56b5597e2312e36d6e3e"
-    static let clientSecretGitExplorerApp = "ba1682b95fff1038035c2e0da8369c840a48e310"
     static let redirectUri = "gitbrowserapp://"
     static let scope = "public_repo,read:user"
     static let tokenUrl = "https://github.com/login/oauth/access_token"
     static let persistedLoginObject = "LoginAccessTokenDTO"
+    
+    // 💡 Load secreta configured in separate `Secrets.xcconfig` and referenced in `Info.plist` file
+    // Ensure that `Secrets.xcconfig` linked correctly to the Build Configurations of the project.
+    static var clientIdGitExplorerApp: String {
+        Bundle.main.object(forInfoDictionaryKey: "GH_CLIENT_ID") as? String ?? "NONE"
+    }
+    static var clientSecretGitExplorerApp: String {
+        Bundle.main.object(forInfoDictionaryKey: "GH_CLIENT_SECRET") as? String ?? "NONE"
+    }
 }

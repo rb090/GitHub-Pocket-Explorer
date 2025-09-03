@@ -9,5 +9,5 @@
 import Foundation
 
 extension Notification.Name {
-    static let reloadProfile = Notification.Name("com.rb.Pocket-Explorer.reload.profile")
+    static let reloadProfile = Notification.Name(Bundle.main.bundleIdentifier! + ".reload.profile")
 }

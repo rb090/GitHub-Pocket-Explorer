@@ -13,9 +13,7 @@ class NetworkRequestUtils {
     func makeRequestObjectFor(url: URL, httpMethod: HTTPMethod) -> URLRequest? {
         // use standard cache policy and time interval
         var backendRequest = URLRequest(url: url)
-        backendRequest.httpMethod = httpMethod.rawValue
-                
-        print("url: \(backendRequest.url?.absoluteString ?? "missing backendRequest.url")")
+        backendRequest.httpMethod = httpMethod.rawValue                
         return backendRequest
     }
     

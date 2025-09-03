@@ -23,7 +23,6 @@
 		5C50675C23F355AB00AD410D /* SimpleHStackForText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675B23F355AB00AD410D /* SimpleHStackForText.swift */; };
 		5C50676023F35E7F00AD410D /* CommonPrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50675F23F35E7F00AD410D /* CommonPrimaryButtonStyle.swift */; };
 		5C546BF223BBE5F2007D22ED /* LicenseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C546BF123BBE5F2007D22ED /* LicenseDTO.swift */; };
-		5C5A0B7C239D5DB70065FA04 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A0B7B239D5DB70065FA04 /* UIApplication+EndEditing.swift */; };
 		5C749CD12389EC4800EA585F /* GitForkDisplayRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C749CD02389EC4800EA585F /* GitForkDisplayRow.swift */; };
 		5C819535240BBFE400F81A27 /* GetRequestsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819525240BBF6800F81A27 /* GetRequestsTest.swift */; };
 		5C819536240BBFE400F81A27 /* GitHubUrlsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C819519240BBF6800F81A27 /* GitHubUrlsTest.swift */; };
@@ -61,7 +60,7 @@
 		5CF7AC33238AF9BE00402BF6 /* GitRepoForksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC32238AF9BE00402BF6 /* GitRepoForksList.swift */; };
 		5CF7AC35238AF9F400402BF6 /* GitRepoForksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC34238AF9F400402BF6 /* GitRepoForksListViewModel.swift */; };
 		5CF7AC3E238B258700402BF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF7AC40238B258700402BF6 /* Localizable.strings */; };
-		5CF7AC43238B26B800402BF6 /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF7AC42238B26B800402BF6 /* String+Localizable.swift */; };
+		781833F12E68ED0100849A6F /* PaginatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781833F02E68ECFC00849A6F /* PaginatorTest.swift */; };
 		78477C532E68148700BC2583 /* NavigationBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78477C522E68147F00BC2583 /* NavigationBarBackButton.swift */; };
 		78477C552E6827B700BC2583 /* PocketExplorerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78477C542E6827AB00BC2583 /* PocketExplorerApp.swift */; };
 		786AD5C82E68500E001757D1 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786AD5C72E68500A001757D1 /* DesignSystem.swift */; };
@@ -95,7 +94,6 @@
 		5C50675B23F355AB00AD410D /* SimpleHStackForText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHStackForText.swift; sourceTree = "<group>"; };
 		5C50675F23F35E7F00AD410D /* CommonPrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		5C546BF123BBE5F2007D22ED /* LicenseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseDTO.swift; sourceTree = "<group>"; };
-		5C5A0B7B239D5DB70065FA04 /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		5C749CD02389EC4800EA585F /* GitForkDisplayRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitForkDisplayRow.swift; sourceTree = "<group>"; };
 		5C819519240BBF6800F81A27 /* GitHubUrlsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUrlsTest.swift; sourceTree = "<group>"; };
 		5C81951B240BBF6800F81A27 /* NetworkRequestManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestManagerTest.swift; sourceTree = "<group>"; };
@@ -138,7 +136,8 @@
 		5CF7AC32238AF9BE00402BF6 /* GitRepoForksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRepoForksList.swift; sourceTree = "<group>"; };
 		5CF7AC34238AF9F400402BF6 /* GitRepoForksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRepoForksListViewModel.swift; sourceTree = "<group>"; };
 		5CF7AC3F238B258700402BF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5CF7AC42238B26B800402BF6 /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		781833ED2E68E16300849A6F /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		781833F02E68ECFC00849A6F /* PaginatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatorTest.swift; sourceTree = "<group>"; };
 		78477C522E68147F00BC2583 /* NavigationBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackButton.swift; sourceTree = "<group>"; };
 		78477C542E6827AB00BC2583 /* PocketExplorerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketExplorerApp.swift; sourceTree = "<group>"; };
 		786AD5C72E68500A001757D1 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
@@ -287,6 +286,7 @@
 		5CA7302F2389845F00EF1911 /* Pocket-Explorer */ = {
 			isa = PBXGroup;
 			children = (
+				781833ED2E68E16300849A6F /* Secrets.xcconfig */,
 				786AD5C72E68500A001757D1 /* DesignSystem.swift */,
 				5C50675D23F35E4200AD410D /* CommonViews */,
 				5C42EE9523E6EBC60048D53D /* GithubLogin */,
@@ -318,6 +318,7 @@
 		5CA730462389846000EF1911 /* Pocket-Explorer-Tests */ = {
 			isa = PBXGroup;
 			children = (
+				781833EF2E68ECF400849A6F /* Helper */,
 				5C3248022413EA380077F7E4 /* Network */,
 				5CA730492389846000EF1911 /* Info.plist */,
 			);
@@ -376,12 +377,18 @@
 			isa = PBXGroup;
 			children = (
 				78C0E6FC2E6785E500EDD63D /* View+ListRowSeparator.swift */,
-				5CF7AC42238B26B800402BF6 /* String+Localizable.swift */,
-				5C5A0B7B239D5DB70065FA04 /* UIApplication+EndEditing.swift */,
 				5CDEC80823F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift */,
 				5C83687323F7595B004D95FA /* Notification+Name.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		781833EF2E68ECF400849A6F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				781833F02E68ECFC00849A6F /* PaginatorTest.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		78477C512E68146400BC2583 /* NavigationBarButtons */ = {
@@ -540,14 +547,12 @@
 				5CF7AC35238AF9F400402BF6 /* GitRepoForksListViewModel.swift in Sources */,
 				5C546BF223BBE5F2007D22ED /* LicenseDTO.swift in Sources */,
 				5CAE6D5023F0A23A0058E16B /* LoginRequestDTO.swift in Sources */,
-				5C5A0B7C239D5DB70065FA04 /* UIApplication+EndEditing.swift in Sources */,
 				5C749CD12389EC4800EA585F /* GitForkDisplayRow.swift in Sources */,
 				5C00969823C1349D00305C58 /* RepoWebsite.swift in Sources */,
 				5CDEC80923F211E1009F41D9 /* UserDefaults+SaveOnDisk.swift in Sources */,
 				5CA730752389848D00EF1911 /* GetRequestsGit.swift in Sources */,
 				5C50675123F337CA00AD410D /* ProfileView.swift in Sources */,
 				5C50676023F35E7F00AD410D /* CommonPrimaryButtonStyle.swift in Sources */,
-				5CF7AC43238B26B800402BF6 /* String+Localizable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +567,7 @@
 				5C81953F240BBFEF00F81A27 /* NetworkRequestManagerTest.swift in Sources */,
 				5CB025F4294143F500CE0114 /* MockURLProtocol.swift in Sources */,
 				5C819540240BBFEF00F81A27 /* NetworkRequestUtilsTest.swift in Sources */,
+				781833F12E68ED0100849A6F /* PaginatorTest.swift in Sources */,
 				5C3248052413EAF10077F7E4 /* PostLoginRequestGitTest.swift in Sources */,
 				5C819538240BBFE900F81A27 /* NetworkRequestUtilsMock.swift in Sources */,
 				5C819535240BBFE400F81A27 /* GetRequestsTest.swift in Sources */,
@@ -719,6 +725,7 @@
 		};
 		5CA730582389846000EF1911 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 781833ED2E68E16300849A6F /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -742,6 +749,7 @@
 		};
 		5CA730592389846000EF1911 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 781833ED2E68E16300849A6F /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

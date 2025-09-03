@@ -44,7 +44,7 @@ class LoginProfileViewModel: ObservableObject {
         
         Task {
             let userResult: Result<UserDTO, Error> = await getGithubReposService.getJsonData(url: urlService.getUserUrl())
-            
+
             switch userResult {
             case .success(let loadedUserDto):
                 userObject = loadedUserDto

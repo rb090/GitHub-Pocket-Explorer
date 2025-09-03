@@ -20,11 +20,11 @@ struct GitReposRow: View {
                 Text(gitRepo.repoName)
                     .font(.headline)
                 
-                Text("\(String.localizedString(forKey: "txt_number_forks")) \(gitRepo.numberOfForks ?? 0)")
+                Text("\(String(localized: "txt_number_forks")) \(gitRepo.numberOfForks ?? 0)")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
                 
-                Text("\(String.localizedString(forKey: "txt_number_watchers")) \(gitRepo.numberOfWatchers ?? 0)")
+                Text("\(String(localized: "txt_number_watchers")) \(gitRepo.numberOfWatchers ?? 0)")
                     .font(.subheadline)
                     .foregroundColor(Color.gray)
             }

@@ -27,6 +27,6 @@
 "btn_txt_open_github" = "App auf GH öffnen";
 "title_github_access" = "GitHub Verbindung";
 "title_repo_detail" = "GitHub Repo Detail";
-"txt_location" = "Location";
+"txt_location" = "Ort";
 "txt_company" = "Unternehmen";
 "txt_login_to_github" = "Logge dich ein um nicht in Rate Limits von GitHub reinzulaufen.";

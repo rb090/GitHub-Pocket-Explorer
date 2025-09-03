@@ -57,5 +57,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>GH_CLIENT_ID</key>
+    <string>$(CLIENT_ID_GIT_EXPLORER_APP)</string>
+    <key>GH_CLIENT_SECRET</key>
+    <string>$(CLIENT_SECRET_GIT_EXPLORER_APP)</string>
 </dict>
 </plist>

@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO write tests
 class Paginator {
     var pageToFetch: Int = 1
     
@@ -26,7 +25,7 @@ class Paginator {
         pageToFetch = 1
     }
     
-    func moreItemsToLoad(numberItemsLoaded: Int) -> Bool {
-        return numberItemsLoaded >= numberOfItemsPerPage && pageToFetch <= maxPagesToLoad
+    func shouldLoadMoreItems(numberItemsLoaded: Int) -> Bool {
+        numberItemsLoaded >= numberOfItemsPerPage && pageToFetch <= maxPagesToLoad
     }
 }

@@ -30,7 +30,7 @@ struct GitReposList: View {
                 
                 // Loading state
                 if viewModelGitReposList.errorWhenLoadingRepos == nil, viewModelGitReposList.isLoading {
-                    LoadingRow(loadingText: String.localizedString(forKey: "txt_loading_repos"))
+                    LoadingRow(loadingText: String(localized: "txt_loading_repos"))
                         .id(UUID())
                         .fullWidthSeparators()
                 }
@@ -65,7 +65,7 @@ struct GitReposList: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle(String.localizedString(forKey: "title_git_repos"))
+            .navigationTitle(String(localized: "title_git_repos"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {

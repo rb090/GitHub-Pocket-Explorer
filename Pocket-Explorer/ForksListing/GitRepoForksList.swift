@@ -26,21 +26,21 @@ struct GitRepoForksList: View {
         List {
             // Initial loading state when there is no data or error.
             if viewModelForksList.repoForksInfo.isEmpty, viewModelForksList.errorWhenLoadingRepoForks == nil {
-                LoadingRow(loadingText: String.localizedString(forKey: "txt_loading_forks"))
+                LoadingRow(loadingText: String(localized: "txt_loading_forks"))
                     .id(UUID())
                     .fullWidthSeparators()
             }
             
             // We got an error, we show an error hint!
             if viewModelForksList.errorWhenLoadingRepoForks != nil {
-                ErrorView(errorText: String.localizedString(forKey: "txt_error_load_forks"))
+                ErrorView(errorText: String(localized: "txt_error_load_forks"))
                     .fullWidthSeparators()
             }
             
             // Display the list and handle infinite loading
             ForEach(viewModelForksList.repoForksInfo) { forkInfo in
                 if viewModelForksList.moreItemsToLoad(item: forkInfo) {
-                    LoadingRow(loadingText: String.localizedString(forKey: "txt_fetching_more"))
+                    LoadingRow(loadingText: String(localized: "txt_fetching_more"))
                         .id(UUID())
                         .fullWidthSeparators()
                         .task {

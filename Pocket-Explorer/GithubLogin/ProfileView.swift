@@ -22,11 +22,11 @@ struct ProfileView: View {
             
             VStack {
                 if userObject.location != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_location"), description: userObject.location!).padding(.top)
+                    SimpleHStackForText(title: String(localized: "txt_location"), description: userObject.location!).padding(.top)
                 }
                 
                 if userObject.company != nil {
-                    SimpleHStackForText(title: String.localizedString(forKey: "txt_company"), description: userObject.company!).padding(.top)
+                    SimpleHStackForText(title: String(localized: "txt_company"), description: userObject.company!).padding(.top)
                 }
                 
                 Button(action: {

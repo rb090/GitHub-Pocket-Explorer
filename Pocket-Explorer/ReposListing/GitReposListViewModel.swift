@@ -86,6 +86,6 @@ class GitReposListViewModel: ObservableObject {
     }
     
     func moreItemsToLoad() -> Bool {
-        pagingHelper.moreItemsToLoad(numberItemsLoaded: gitRepos.count)
+        pagingHelper.shouldLoadMoreItems(numberItemsLoaded: gitRepos.count)
     }
 }
