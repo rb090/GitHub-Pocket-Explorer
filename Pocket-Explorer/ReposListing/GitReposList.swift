@@ -40,7 +40,7 @@ struct GitReposList: View {
                     Text("txt_no_results_for_search")
                         .font(.headline)
                         .foregroundStyle(DesignSystem.AppColors.primary)
-                        .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
+                        .frame(maxWidth: .infinity, minHeight: DesignSystem.Size.ListRow.height, alignment: .leading)
                         .fullWidthSeparators()
                 }
                 

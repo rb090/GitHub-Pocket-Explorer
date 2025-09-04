@@ -15,8 +15,9 @@ struct ErrorView: View {
     var body: some View {
         Text(self.errorText)
             .font(.headline)
-            .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
-            .padding(.init(top: 0, leading: 5, bottom: 0, trailing: 5))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, DesignSystem.Spacing.s)
+            .padding(.vertical, DesignSystem.Spacing.s)
             .foregroundColor(Color.white)
             .background(Color.red)
             .animation(.easeIn, value: errorText)
@@ -25,16 +26,15 @@ struct ErrorView: View {
 
 #Preview("Animated ErrorView", traits: .sizeThatFitsLayout) {
     struct ErrorViewPreviewContainer: View {
-        @State private var errorText = "Initial error"
+        @State private var errorText: String = "An error with short text."
         
         var body: some View {
-            ErrorView(errorText: errorText).onAppear {
-                // Toggle the error text every 2 seconds
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
-                    errorText = (errorText == "Initial error") ? "Something went wrong!" : "Initial error"
+            ErrorView(errorText: errorText)
+                .onAppear {
+                    Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+                        errorText = (errorText == "An error with short text.") ? "Another thing went wrong, I am a longer text over multiple lines of code! So, here we go way more text to increase the number of lines." : "An error with short text."
+                    }
                 }
-            }
-            .padding()
         }
     }
     

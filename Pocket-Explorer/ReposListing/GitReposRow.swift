@@ -29,7 +29,7 @@ struct GitReposRow: View {
                     .foregroundColor(Color.gray)
             }
         }
-        .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: DesignSystem.Size.ListRow.height, alignment: .leading)
     }
 }
 

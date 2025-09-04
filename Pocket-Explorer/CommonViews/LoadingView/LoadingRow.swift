@@ -23,7 +23,7 @@ struct LoadingRow: View {
                 .padding(.init(top: 0, leading: 10, bottom: 0, trailing: 10))
                 .foregroundColor(DesignSystem.AppColors.primary)
         }
-        .frame(maxWidth: .infinity, minHeight: 45, alignment: .leading)
+        .frame(maxWidth: .infinity, minHeight: DesignSystem.Size.ListRow.height, alignment: .leading)
     }
 }
 

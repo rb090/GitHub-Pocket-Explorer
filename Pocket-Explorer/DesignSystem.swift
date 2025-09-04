@@ -34,5 +34,8 @@ enum DesignSystem {
             static let height: CGFloat = 45
             static let corner: CGFloat = 12
         }
+        enum ListRow {
+            static let height: CGFloat = 45
+        }
     }
 }

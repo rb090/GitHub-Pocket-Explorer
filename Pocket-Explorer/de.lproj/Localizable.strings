@@ -19,9 +19,9 @@
 "txt_fetching_more" = "Lade mehr Einträge...";
 "txt_loading_repos" = "Laden";
 "txt_loading_forks" = "Lade forks";
-"txt_error_load_repos" = "Error beim Laden der Einträge";
-"txt_error_load_forks" = "Error beim Laden der forks für diese Repo";
-"txt_no_results_for_search" = "Keine Ergebnisse für die Suche";
+"txt_error_load_repos" = "Fehler beim Laden der Einträge.";
+"txt_error_load_forks" = "Fehler beim Laden der forks für diese Repo.";
+"txt_no_results_for_search" = "Keine Ergebnisse für die Suche.";
 "title_github_login" = "GitHub Login";
 "btn_txt_review_app_access" = "Zugriff in GH verwalten";
 "btn_txt_open_github" = "App auf GH öffnen";
