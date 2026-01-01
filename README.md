@@ -4,13 +4,19 @@ Swift-UI example application showing popular repositories from GitHub sort by st
 
 Paging is also implemented, when scrolling to the bottom, next entries for list are loaded. This also work when keyboard is shown up.
 
-The goal was to get an idea how SwiftUI can work in a "somehow real world project" in a bigger context and with some kind of "real life questions". My resume is, SwifUI is a new great opportunity to develop apps but it takes some time to learn it and to understand it. One beautiful aspect is, it is simple to make an application looking good on a normal appearence and also when dark appearence is active. And also simple to make it look great on an ipad.
+When this project was initiated in 2019, the goal was to explore how SwiftUI could be applied in a larger, "real-world" project, addressing some practical, real-life challenges. 
 
-To write an debouncer to throttle requests I read this great article here: https://medium.com/@soxjke/property-wrappers-in-swift-5-1-297ae08fc7a0
+Since then, SwiftUI has evolved significantly and has become an industry standard. Today, it represents one of the most powerful and effective approaches for defining user interface code.
 
-Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)used and integrate.
+Fe. debouncing no longer requires a custom implementation like described [in this Medium article](https://medium.com/@soxjke/property-wrappers-in-swift-5-1-297ae08fc7a0). SwiftUI and Combine provide this functionality out of the box by observing the published query property, filtering out unchanged values, and delaying execution until the user has stopped typing for a short period. This ensures that the action is triggered only once per meaningful input change, significantly reducing unnecessary work such as repeated API calls. 
 
-![](github-pocket-explorer.gif)
+<video controls preload="metadata" width="600">
+  <source src="Screencast-App.mp4" type="video/mp4">
+</video>
+
+> [!IMPORTANT]
+> To enable GitHub login, a GitHub OAuth App must be created as described in the GitHub documentation [Creating an OAuth app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app). Create a `Secrets.xcconfig` file in the root folder of the project and define the values `CLIENT_ID_GIT_EXPLORER_APP` and `CLIENT_SECRET_GIT_EXPLORER_APP` corresponding to the OAuth app credentials. Details on integrating configuration files can be found in the official Apple docs [Adding a build configuration file to your project](https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project).
+> ⚠️ This approach is a pragmatic compromise. `xcconfig` files are intended for environment-specific build settings, not for securely storing secrets. While this is acceptable for local development or non-production builds, it must not be used in production. In production mode, client secrets should never be embedded in the app. They should be ideally provided by a backend API and returned only for authenticated clients.
 
 ## Features of the app:
 - List Swift Repos
@@ -25,9 +31,6 @@ Also great 'normal swift code' (which is not SwiftUI or Combine) can be (re-)use
 - Pagination, possible to load max 5 pages of GitHub repos for the search of forks for a repo
 - Display loading
 - Customize navigation bar items
-
-## AppStore
-This app is available for iPhone and iPad OS 13+ and is also published in the official AppStore: https://apps.apple.com/us/app/pocket-explorer/id1505622647
 
 ## Open TODOs:
 - extend unit test suite for the project
