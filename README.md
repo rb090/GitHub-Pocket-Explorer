@@ -1,18 +1,14 @@
 # GitHub-Pocket-Explorer
 
-Swift-UI example application showing popular repositories from GitHub sort by stars. In this app a user can also search the repositories, it contains a searchbar at the top. 
+ This is aSwift-UI example application showing popular repositories from GitHub sort by stars. In this app a user can also search the repositories, it contains a searchbar at the top. 
 
-Paging is also implemented, when scrolling to the bottom, next entries for list are loaded. This also work when keyboard is shown up.
+Paging is also implemented, when scrolling to the bottom, next entries for list are loaded. This also work when keyboard is shown up. For a small visual overview of the application, please have a look at the uploaded [screencast of the app](https://github.com/rb090/GitHub-Pocket-Explorer/Screencast-App.mp4).
 
 When this project was initiated in 2019, the goal was to explore how SwiftUI could be applied in a larger, "real-world" project, addressing some practical, real-life challenges. 
 
 Since then, SwiftUI has evolved significantly and has become an industry standard. Today, it represents one of the most powerful and effective approaches for defining user interface code.
 
 Fe. debouncing no longer requires a custom implementation like described [in this Medium article](https://medium.com/@soxjke/property-wrappers-in-swift-5-1-297ae08fc7a0). SwiftUI and Combine provide this functionality out of the box by observing the published query property, filtering out unchanged values, and delaying execution until the user has stopped typing for a short period. This ensures that the action is triggered only once per meaningful input change, significantly reducing unnecessary work such as repeated API calls. 
-
-<video controls preload="metadata" width="600">
-  <source src="Screencast-App.mp4" type="video/mp4">
-</video>
 
 > [!IMPORTANT]
 > To enable GitHub login, a GitHub OAuth App must be created as described in the GitHub documentation [Creating an OAuth app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app). Create a `Secrets.xcconfig` file in the root folder of the project and define the values `CLIENT_ID_GIT_EXPLORER_APP` and `CLIENT_SECRET_GIT_EXPLORER_APP` corresponding to the OAuth app credentials. Details on integrating configuration files can be found in the official Apple docs [Adding a build configuration file to your project](https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project).
