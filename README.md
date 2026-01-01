@@ -2,7 +2,11 @@
 
  This is aSwift-UI example application showing popular repositories from GitHub sort by stars. In this app a user can also search the repositories, it contains a searchbar at the top. 
 
-Paging is also implemented, when scrolling to the bottom, next entries for list are loaded. This also work when keyboard is shown up. For a small visual overview of the application, please have a look at the uploaded [screencast of the app](https://github.com/rb090/GitHub-Pocket-Explorer/Screencast-App.mp4).
+Paging is also implemented, when scrolling to the bottom, next entries for list are loaded. This also work when keyboard is shown up. 
+
+Here a small visual overview of the application:
+
+![](App-Screencast.gif)
 
 When this project was initiated in 2019, the goal was to explore how SwiftUI could be applied in a larger, "real-world" project, addressing some practical, real-life challenges. 
 
